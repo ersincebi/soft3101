@@ -155,7 +155,26 @@ Flow of Events
 13.John selects the class. 
 14.John clicks add a student. 
 15.John enters the student’s information. 
-16.Website sends a notification to Alice. 
+16.Website sends a notification to Alice.
+
+
+
+Scenario name                      adminApprovesChanges  
+Participation Actor instances  john:Admin, alice:StudentAffairs 
+
+Flow of Events  
+  
+1.John enters the website. 
+2.John sees login screen. 
+3.John clicks log in button. 
+4.John logs in. 
+5.John clicks requests button. 
+6.John selects change requests. 
+7.John sees requests. 
+8.John selects the change. 
+9.John sees information about the change and message from Alice. 
+10.John clicks approve button. 
+11.Website sends a notification to Alice. 
 
  
 
