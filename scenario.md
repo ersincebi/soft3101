@@ -68,3 +68,103 @@ Flow of events:
 
 
 
+Admin Scenarios
+
+Scenario name       adminApprovesRemoveStudent 
+Participation Actor instances  john:Admin, alice:StudentAffairs 
+ 
+Flow of Events
+1.John enters the website 
+2.John sees login screen. 
+3.John clicks log in button. 
+4.John logs in. 
+5.John clicks requests button. 
+6.John selects approve requests. 
+7.John selects students. 
+8.John sees the requests. 
+9.John selects the request. 
+10.John sees information about request that gives information about student and class. 
+11.John approves request. 
+12.John clicks manage class button. 
+13.John selects the class. 
+14.John clicks delete a student. 
+15.John selecst the student. 
+16.Website sends a notification to Alice. 
+
+ 
+  
+Scenario name       adminApprovesDeleteStudent 
+Participation Actor instances  john:Admin, alice:StudentAffairs
+
+Flow of Events  
+1.John enters the website 
+2.John sees login screen. 
+3.John clicks log in button. 
+4.John logs in. 
+5.John clicks requests button. 
+6.John selects delete requests. 
+7.John sees the delete requests. 
+8.John selects the request. 
+9.John sees information about request that gives information about student and message from Alice. 
+10.John clicks approve button. 
+11.John click delete user button. 
+12.John selects the student. 
+13.Website sends a notification to John. 
+
+ 
+
+Scenario name       adminApprovesClassOfTeacher 
+Participation Actor instances  john:Admin, alice:StudentAffairs 
+
+Flow of Events  
+1.John enters the website 
+2.John sees login screen. 
+3.John clicks log in button. 
+4.John logs in. 
+5.John clicks requests button. 
+6.John selects approve requests. 
+7.John selects teachers. 
+8.John sees the requests. 
+9.John selects the request. 
+10.John sees information about request that gives information about teacher and class. 
+11.John clicks approve button. 
+12.John clicks manage class button. 
+13.John selects the class. 
+14.John clicks add a teacher. 
+15.John enters the teacher’s information. 
+16.Website sends a notification to Alice. 
+
+ 
+
+Scenario name       adminApprovesClassOfStudent 
+Participation Actor instances  john:Admin, alice:StudentAffairs 
+
+Flow of Events  
+1.John enters the website 
+2.John sees login screen. 
+3.John clicks log in button. 
+4.John logs in. 
+5.John clicks requests button. 
+6.John selects approve requests. 
+7.John selects students. 
+8.John sees the requests. 
+9.John selects the request. 
+10.John sees information about request that gives information about student and class. 
+11.John approves request. 
+12.John clicks manage class button. 
+13.John selects the class. 
+14.John clicks add a student. 
+15.John enters the student’s information. 
+16.Website sends a notification to Alice. 
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+
