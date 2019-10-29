@@ -18,7 +18,11 @@ Flow of events:
 2.	He sees the login screen. 
 3.	The website asks for akif's registered user name and password.
 4.	He sees the page of student affairs.
+<<<<<<< HEAD
 5.	Arif, clicks the notification icon on the top right corner. and the request page is displayed. At this page may approve or reject requests.
+=======
+5.	Arif, clicks the notification icon on the top right corner. and the request page is displayed. At this page may approve or reject requests.He press save button after making changes.
+>>>>>>> origin/Scenario
 6.	He press save button after making changes.
 
 
