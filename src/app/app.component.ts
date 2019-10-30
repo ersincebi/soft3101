@@ -4,5 +4,6 @@ import { Component } from '@angular/core';
 	selector: 'app-root',
 	templateUrl: './layouts/blanklayout/blanklayout.component.html',
 	styleUrls: [ ]
+	
 })
 export class AppComponent { }

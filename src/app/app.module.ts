@@ -7,6 +7,7 @@ import { SigninComponent } from './pages/signin/signin.component';
 import { BlanklayoutComponent } from './layouts/blanklayout/blanklayout.component';
 import { TopbarComponent } from './layouts/topbar/topbar.component';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
+import { FooterComponent } from './layouts/footer/footer.component';
 
 @NgModule({
 	declarations: [
@@ -14,7 +15,8 @@ import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 		SigninComponent,
 		BlanklayoutComponent,
 		TopbarComponent,
-		SidebarComponent
+		SidebarComponent,
+		FooterComponent
 	],
 	imports: [
 		BrowserModule,
