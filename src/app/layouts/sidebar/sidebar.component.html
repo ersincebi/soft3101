@@ -1,28 +1,34 @@
 
-<header>Dashboard</header>
-<div class="scroll__wrapper" id="scroll__wrapper">
-	<div id="scroller">
-		<div class="scroll__container" id="scroll__container">
-			<nav class="mdl-navigation">
-				<a class="mdl-navigation__link mdl-navigation__link--current" href="/">
-					<i class="material-icons" role="presentation">dashboard</i>
-					Menü Öğesi Örnek
-				</a>
-				<div class="sub-navigation">
-					<a class="mdl-navigation__link">
-						<i class="material-icons">view_comfy</i>
-						Açılır Menü Örnek
-						<i class="material-icons">keyboard_arrow_down</i>
-					</a>
-					<div class="mdl-navigation">
-						<a class="mdl-navigation__link" href="/biyer">
-							Menü İtemi Örnek
-						</a>
-					</div>
-				</div>
-				<div class="mdl-layout-spacer"></div>
-			</nav>
-		</div>
+<div class="navbar nav_title" style="border: 0;">
+	<a href="/" class="site_title"><span>WhenTheRingBells</span></a>
+</div>
+
+<div class="clearfix"></div>
+
+<div class="profile clearfix">
+	<div class="profile_pic">
+		<img src="assets/images/portrait/user.png" alt="..." class="img-circle profile_img">
 	</div>
-	<div class='scroller__bar' id="scroller__bar"></div>
+	<div class="profile_info">
+		<span>Welcome,</span>
+		<h2>Kullanıcı İsmi</h2>
+	</div>
+</div>
+<br />
+<div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+	<div class="menu_section">
+		<ul class="nav side-menu">
+			<li><a><i class="fa fa-home"></i> Açılır Menü Öğesi <span class="fa fa-chevron-down"></span></a>
+				<ul class="nav child_menu">
+					<li><a href="/">Menü Öğesi</a></li>
+				</ul>
+			</li>
+			<li>
+				<a href="/">
+					<i class="fa fa-laptop"></i>
+					Menü Öğesi
+				</a>
+			</li>
+		</ul>
+	</div>
 </div>

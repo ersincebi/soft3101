@@ -1,11 +1,25 @@
-<app-topbar></app-topbar>
+<div class="container body">
+	<div class="main_container">
+		<div class="col-md-3 left_col">
+				<div class="left_col scroll-view">
+				<app-sidebar></app-sidebar>
+			</div>
+		</div>
 
-<div class="mdl-layout__drawer">
-	<app-sidebar></app-sidebar>
+		<div class="top_nav">
+			<div class="nav_menu">
+				<nav>
+					<app-topbar></app-topbar>
+				</nav>
+			</div>
+		</div>
+		<div class="right_col" role="main">
+			<div class="">
+				<!-- main content -->
+			</div>
+		</div>
+	</div>
 </div>
 
-<main class="mdl-layout__content">
-	<div class="mdl-grid mdl-grid--no-spacing dashboard">
-			<!-- diğer sayfalar buyaya dolacak -->
-	</div>
-</main>
+
+<app-footer></app-footer>

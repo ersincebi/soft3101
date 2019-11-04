@@ -4,17 +4,19 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SigninComponent } from './pages/signin/signin.component';
+import { BlanklayoutComponent } from './layouts/blanklayout/blanklayout.component';
 import { TopbarComponent } from './layouts/topbar/topbar.component';
 import { SidebarComponent } from './layouts/sidebar/sidebar.component';
-import { BlanklayoutComponent } from './layouts/blanklayout/blanklayout.component';
+import { FooterComponent } from './layouts/footer/footer.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		SigninComponent,
+		BlanklayoutComponent,
 		TopbarComponent,
 		SidebarComponent,
-		BlanklayoutComponent
+		FooterComponent
 	],
 	imports: [
 		BrowserModule,
