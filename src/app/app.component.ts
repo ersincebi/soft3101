@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 
 @Component({
-	selector: 'app-root',
-	templateUrl: './layouts/blanklayout/blanklayout.component.html',
-	styleUrls: [ ]
-	
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
 })
-export class AppComponent { }
+export class AppComponent {
+  title = 'bootDene';
+}
