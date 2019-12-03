@@ -1,38 +1,54 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { Route, RouterModule } from '@angular/router';
-import { AppRoutingModule } from './shared/routing/app-routing.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AuthService } from "./shared/services/auth.service";
+import { LoginComponent } from './login/login.component';
 
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireAuthModule } from '@angular/fire/auth';
-import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { environment } from '../environments/environment';
-
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { LoginComponent } from './components/login/login.component';
-import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ListeComponent } from './dersListesi/liste.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { DersSilComponent } from './dersListesi/ders-sil/ders-sil.component';
+import { DersInfoComponent } from './dersListesi/ders-info/ders-info.component';
+import { DerseEkleComponent } from './dersListesi/derse-ekle/derse-ekle.component';
+import { DersEkleComponent } from './dersListesi/ders-ekle/ders-ekle.component';
+import { AngularFireModule } from 'angularfire2';
+import {AngularFireAuthModule} from 'angularfire2/auth';
+import {AngularFireDatabaseModule} from 'angularfire2/database';
 
 
 @NgModule({
-  declarations:[
+  declarations: [
     AppComponent,
     LoginComponent,
-    DashboardComponent,
-    ForgotPasswordComponent,
+
+    ListeComponent,
+    DersEkleComponent,
+    DersSilComponent,
+    DersInfoComponent,
+    DerseEkleComponent
   ],
   imports: [
-    AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule,
-    AngularFirestoreModule,
+    NgbModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    AngularFireModule.initializeApp(
+      {
+        apiKey: "AIzaSyAQkRsiiVowpbMdFx_lx8DhATKPtzxdBGk",
+        authDomain: "angular-f02f6.firebaseapp.com",
+        databaseURL: "https://angular-f02f6.firebaseio.com",
+        projectId: "angular-f02f6",
+        storageBucket: "angular-f02f6.appspot.com",
+        messagingSenderId: "619730448238",
+        appId: "1:619730448238:web:4a2e64c08cec751b911b7f",
+        measurementId: "G-NE5CX9L337"
+      }
+    ),
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+
   ],
-  providers: [AuthService],
+  providers: [],
   bootstrap: [AppComponent]
 })
-
 export class AppModule { }
 
