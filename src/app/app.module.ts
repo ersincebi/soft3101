@@ -14,6 +14,7 @@ import { DersEkleComponent } from './dersListesi/ders-ekle/ders-ekle.component';
 import { AngularFireModule } from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
+import { AdminComponent } from './admin/admin.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
     DersEkleComponent,
     DersSilComponent,
     DersInfoComponent,
-    DerseEkleComponent
+    DerseEkleComponent,
+    AdminComponent
   ],
   imports: [
     NgbModule,
