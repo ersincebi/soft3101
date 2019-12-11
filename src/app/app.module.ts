@@ -14,6 +14,11 @@ import { DersEkleComponent } from './dersListesi/ders-ekle/ders-ekle.component';
 import { AngularFireModule } from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
+import { CreateComponent } from './attendance/create/create.component';
+import { EditComponent } from './attendance/edit/edit.component';
+import { ViewComponent } from './attendance/view/view.component';
+import { TakeComponent } from './attendance/take/take.component';
+import { EditAttendanceComponent } from './attendance/edit-attendance/edit-attendance.component';
 
 
 @NgModule({
@@ -25,7 +30,12 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
     DersEkleComponent,
     DersSilComponent,
     DersInfoComponent,
-    DerseEkleComponent
+    DerseEkleComponent,
+    CreateComponent,
+    EditComponent,
+    ViewComponent,
+    TakeComponent,
+    EditAttendanceComponent
   ],
   imports: [
     NgbModule,
