@@ -12,6 +12,7 @@ import { ViewComponent } from './attendance/view/view.component';
 import { TakeComponent } from './attendance/take/take.component';
 import { EditAttendanceComponent } from './attendance/edit-attendance/edit-attendance.component';
 import { AppComponent } from './app.component';
+import {CourseComponent} from './course/course.component';
 
 
 const routes: Routes = [
@@ -21,13 +22,15 @@ const routes: Routes = [
 	{ path: "dersSil", component:DersSilComponent},
 	{ path: "dersInfo", component:DersInfoComponent},
 	{ path: "derseEkle", component: DerseEkleComponent },
+    {path:"Oders", component:CourseComponent},
 	{ path: "createAttendance", component: CreateComponent},
 	{ path: "editAttendance", component: EditComponent},
 	{ path: "viewAttendance", component: ViewComponent },
 	{ path: "takeAttendance", component: TakeComponent },
 	{ path: "editTakedAttendance", component: EditAttendanceComponent },
-  {path:"app", component:AppComponent}
-  
+  {path:"app", component:AppComponent},
+
+
 ];
 
 @NgModule({
