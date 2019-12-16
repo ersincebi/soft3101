@@ -9,20 +9,9 @@
 		</tr>
 	</thead>
 	<tbody>
-		<tr>
-			<th scope="row">1</th>
-			<td>Attendance 1</td>
-			<td>12.12.2019</td>
-			<td>100%</td>
-			<td>
-				<a href="editTakedAttendance" target="_blank" rel="noopener noreferrer">Edit</a>
-				&nbsp;|&nbsp;
-				<a href="" target="_blank" rel="noopener noreferrer">Delete</a>
-			</td>
-		</tr>
-		<tr>
-			<th scope="row">1</th>
-			<td>Attendance 1</td>
+		<tr *ngFor="let obj of dataCourses;let i=index">
+			<th scope="row">{{ i + 1 }}</th>
+			<td>{{ obj.Title }}</td>
 			<td>12.12.2019</td>
 			<td>100%</td>
 			<td>

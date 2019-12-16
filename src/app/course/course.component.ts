@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {CourseServiceService} from '../course-service.service';
+import {CourseServiceService} from '../services/course/course-service.service';
 import {AngularFireAuth} from '@angular/fire/auth';
 @Component({
   selector: 'app-course',
