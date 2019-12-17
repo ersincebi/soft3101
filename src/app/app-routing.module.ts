@@ -13,7 +13,8 @@ import { TakeComponent } from './attendance/take/take.component';
 import { EditAttendanceComponent } from './attendance/edit-attendance/edit-attendance.component';
 import { AppComponent } from './app.component';
 import {CourseComponent} from './course/course.component';
-
+import {ListAllcourseComponent} from './list-allcourse/list-allcourse.component';
+import {ResponseRequestComponent} from './response-request/response-request.component';
 
 const routes: Routes = [
 	{ path:'',component:LoginComponent},
@@ -28,6 +29,8 @@ const routes: Routes = [
 	{ path: "viewAttendance", component: ViewComponent },
 	{ path: "takeAttendance", component: TakeComponent },
 	{ path: "editTakedAttendance", component: EditAttendanceComponent },
+    { path: "listAllCourses", component : ListAllcourseComponent},
+    { path: "requests", component: ResponseRequestComponent},
   {path:"app", component:AppComponent},
 
 

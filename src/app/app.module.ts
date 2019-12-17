@@ -20,6 +20,8 @@ import { ViewComponent } from './attendance/view/view.component';
 import { TakeComponent } from './attendance/take/take.component';
 import { EditAttendanceComponent } from './attendance/edit-attendance/edit-attendance.component';
 import { CourseComponent } from './course/course.component';
+import { ListAllcourseComponent } from './list-allcourse/list-allcourse.component';
+import { ResponseRequestComponent } from './response-request/response-request.component';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { CourseComponent } from './course/course.component';
     ViewComponent,
     TakeComponent,
     EditAttendanceComponent,
-    CourseComponent
+    CourseComponent,
+    ListAllcourseComponent,
+    ResponseRequestComponent
   ],
   imports: [
     NgbModule,
