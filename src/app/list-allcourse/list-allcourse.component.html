@@ -11,8 +11,8 @@
     <tr *ngFor="let obj of dataCourses;let i=index">
       <th scope="row">{{i+1}}</th>
       <td>{{obj.Title}}</td>
-      <td>{{obj.ogretmen}}</td>
-      <td><button (click)="getReq(obj.key)">Gönder </button> </td>
+      <td>{{obj.Teacher}}</td>
+      <td><button type="button" class="btn btn-secondary"(click)="getReq(obj.key)">Gönder </button> </td>
     </tr>
   </tbody>
 </table>
