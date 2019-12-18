@@ -32,13 +32,13 @@ export class CourseServiceService {
   /*return  this.db.list('/requestCourses/').snapshotChanges().pipe(map(changes => changes
            .map(c => ({key: c.payload.key, ...c.payload.val()}))));*/
   sendRequest(user: firebase.User, key){
-      this.db.object('/requestCourses/' + user.uid + '/ ' + key).update({
+      this.db.object('/requestCourses/' + user.uid + '/' + key).update({
           email: user.email,
           uid: user.uid
     });
   }
   responseRequest(uid, key){
-      this.db.object('/users/' + uid + '/Courses' + key).update({
+      this.db.object('/users/' + uid + '/Courses/' + key).update({
           onay: true
     });
   }

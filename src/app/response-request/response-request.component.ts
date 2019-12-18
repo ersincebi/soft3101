@@ -8,24 +8,43 @@ import {AngularFireAuth} from '@angular/fire/auth';
   styleUrls: ['./response-request.component.css']
 })
 export class ResponseRequestComponent implements OnInit {
- listRequest: any;
+listArray: Array<Object>;
+listRequest: Array<String>;
   constructor(private cs: CourseServiceService , private afAuth: AngularFireAuth) { }
-
+count =0;
   ngOnInit() {
+      const z = [];
+       this.listArray = [];
       this.cs.getItems().subscribe(items => {
-          console.log(items);
           items.forEach(values => {
-              console.log(values);
-              let key = values.key;
-              console.log(key);
-              this.cs.getSubItems(key).subscribe(subItems => {
-                 this.listRequest= subItems;
+
+                 this.listRequest = [];
+                let key = values.key;
+                this.listRequest.push(key);
+              //console.log(key)
+              this.listArray.push(this.listRequest);
+           });
+
+      for (let i = 0; i < this.listArray.length; i++) {
+
+          this.cs.getSubItems(this.listArray[i][0]).subscribe(subItems => {
+                    console.log(this.listArray[i][0]);
+                  //console.log(subItems)
+                   let k=1;
                   subItems.forEach(uid => {
-                      console.log(uid.payload.val());
+                      this.listArray[i][k]=(uid.key);
+                      k++;
                   });
               });
-          });
+            }
+      console.log(this.listArray);
+
+
+
+
       });
+
+
   }
     applyRequest(uid, key){
           this.cs.responseRequest(uid, key);
