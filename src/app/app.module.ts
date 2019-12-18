@@ -14,7 +14,16 @@ import { DersEkleComponent } from './dersListesi/ders-ekle/ders-ekle.component';
 import { AngularFireModule } from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
+
 import { AdminComponent } from './admin/admin.component';
+import { CreateComponent } from './attendance/create/create.component';
+import { EditComponent } from './attendance/edit/edit.component';
+import { ViewComponent } from './attendance/view/view.component';
+import { TakeComponent } from './attendance/take/take.component';
+import { EditAttendanceComponent } from './attendance/edit-attendance/edit-attendance.component';
+import { CourseComponent } from './course/course.component';
+import { ListAllcourseComponent } from './list-allcourse/list-allcourse.component';
+import { ResponseRequestComponent } from './response-request/response-request.component';
 
 
 @NgModule({
@@ -27,7 +36,16 @@ import { AdminComponent } from './admin/admin.component';
     DersSilComponent,
     DersInfoComponent,
     DerseEkleComponent,
-    AdminComponent
+    AdminComponent,
+    CreateComponent,
+    EditComponent,
+    ViewComponent,
+    TakeComponent,
+    EditAttendanceComponent,
+    CourseComponent,
+    ListAllcourseComponent,
+    ResponseRequestComponent
+
   ],
   imports: [
     NgbModule,
@@ -35,14 +53,14 @@ import { AdminComponent } from './admin/admin.component';
     AppRoutingModule,
     AngularFireModule.initializeApp(
       {
-        apiKey: "AIzaSyAQkRsiiVowpbMdFx_lx8DhATKPtzxdBGk",
-        authDomain: "angular-f02f6.firebaseapp.com",
-        databaseURL: "https://angular-f02f6.firebaseio.com",
-        projectId: "angular-f02f6",
-        storageBucket: "angular-f02f6.appspot.com",
-        messagingSenderId: "619730448238",
-        appId: "1:619730448238:web:4a2e64c08cec751b911b7f",
-        measurementId: "G-NE5CX9L337"
+        apiKey: "AIzaSyAt-VAJ9bwNn7MPCjoNuJkkge1rETT_wGQ",
+    authDomain: "whentheringbells-e723b.firebaseapp.com",
+    databaseURL: "https://whentheringbells-e723b.firebaseio.com",
+    projectId: "whentheringbells-e723b",
+    storageBucket: "whentheringbells-e723b.appspot.com",
+    messagingSenderId: "839049410073",
+    appId: "1:839049410073:web:f2c3a893e58ecc88b29c88",
+    measurementId: "G-2FXFE9XWB3"
       }
     ),
     AngularFireAuthModule,

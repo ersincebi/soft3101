@@ -8,6 +8,11 @@ import { UserService } from './user.service';
 })
 export class AppComponent {
   title = 'bootDene';
+  userTemp:firebase.User
   constructor(public user: UserService) { }
+
+  ngOnInit(){
+    this.user.getCurrentUser().subscribe(userTemp=>this.userTemp=userTemp)
+  }
 }
 

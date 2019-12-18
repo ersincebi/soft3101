@@ -4,12 +4,13 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import {map, switchMap } from 'rxjs/operators'
 import {auth} from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
+import {CanActivate, Router} from '@angular/router'
 @Injectable({
   providedIn: 'root',
 
 })
 
-export class UserService {
+export class UserService implements CanActivate {
 
 uid = this.afAuth.authState.pipe(
   map(authState => {
@@ -38,11 +39,15 @@ isOgrenciIsleri:Observable<boolean>=this.uid.pipe(
     }
   })
 );
-  constructor(private afAuth:AngularFireAuth,private db :AngularFireDatabase) { this. afAuth.authState.subscribe(user => {this.saveUser(user); });}
+  constructor(private afAuth:AngularFireAuth,private db :AngularFireDatabase, private router:Router) {
+    
+     this. afAuth.authState.subscribe(user => {this.saveUser(user); });}
   login(email, password){
 
 this.afAuth.auth.signInWithEmailAndPassword(email, password);
-
+if(this.afAuth.authState!=null){
+  this.router.navigate(['liste'])
+}
   }
   logout(){
 this.afAuth.auth.signOut();
@@ -54,5 +59,22 @@ this.afAuth.auth.signOut();
       email: user.email
     });
   }
+  getCurrentUser(){
+
+    return this.afAuth.authState;
+  }
+  canActivate():Observable<boolean>{
+    return this.afAuth.authState.pipe(
+      map(user=>{
+        if(user){
+          return true;
+        }else{
+          this.router.navigateByUrl('');
+          return false;
+        }
+      })
+    )
+  }
+
 }
 
