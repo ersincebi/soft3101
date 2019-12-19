@@ -22,6 +22,7 @@ import { EditAttendanceComponent } from './attendance/edit-attendance/edit-atten
 import { CourseComponent } from './course/course.component';
 import { ListAllcourseComponent } from './list-allcourse/list-allcourse.component';
 import { ResponseRequestComponent } from './response-request/response-request.component';
+import { UserProfilComponent } from './user-profil/user-profil.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { ResponseRequestComponent } from './response-request/response-request.co
     EditAttendanceComponent,
     CourseComponent,
     ListAllcourseComponent,
-    ResponseRequestComponent
+    ResponseRequestComponent,
+    UserProfilComponent
   ],
   imports: [
     NgbModule,

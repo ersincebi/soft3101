@@ -44,10 +44,8 @@ isOgrenciIsleri:Observable<boolean>=this.uid.pipe(
      this. afAuth.authState.subscribe(user => {this.saveUser(user); });}
   login(email, password){
 
-this.afAuth.auth.signInWithEmailAndPassword(email, password);
-if(this.afAuth.authState!=null){
-  this.router.navigate(['liste'])
-}
+this.afAuth.auth.signInWithEmailAndPassword(email, password).then((result)=> this.router.navigate(['liste']));
+
   }
   logout(){
 this.afAuth.auth.signOut();

@@ -37,6 +37,10 @@ export class CourseServiceService {
           uid: user.uid
     });
   }
+  getAllUsers(user: firebase.User) {
+    return  this.db.list('/users/').snapshotChanges().pipe(map(changes => changes
+        .map(c => ({key: c.payload.key, ...c.payload.val()}))));
+}
   responseRequest(uid, key){
       this.db.object('/users/' + uid + '/Courses/' + key).update({
           onay: true
