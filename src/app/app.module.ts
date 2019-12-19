@@ -23,6 +23,8 @@ import { CourseComponent } from './course/course.component';
 import { ListAllcourseComponent } from './list-allcourse/list-allcourse.component';
 import { ResponseRequestComponent } from './response-request/response-request.component';
 import { UserProfilComponent } from './user-profil/user-profil.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -43,7 +45,9 @@ import { UserProfilComponent } from './user-profil/user-profil.component';
     CourseComponent,
     ListAllcourseComponent,
     ResponseRequestComponent,
-    UserProfilComponent
+    UserProfilComponent,
+    RegisterUserComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     NgbModule,

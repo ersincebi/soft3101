@@ -73,6 +73,24 @@ this.afAuth.auth.signOut();
       })
     )
   }
+  SignUp(email, password) {
+    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+      .then((result) => {
+        this.saveUser(result.user);
+        this.router.navigate(['']) //kayıt yapıldıgında nereye yönlendiricegini sec 
+      }).catch((error) => {
+        window.alert(error.message)
+      })
+  }
+
+  ForgotPassword(passwordResetEmail) {
+    return this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail)
+    .then(() => {
+      window.alert('Password reset email sent, check your inbox.');
+    }).catch((error) => {
+      window.alert(error)
+    })
+  }
 
 }
 

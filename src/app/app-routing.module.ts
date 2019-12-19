@@ -17,6 +17,8 @@ import {ListAllcourseComponent} from './list-allcourse/list-allcourse.component'
 import {ResponseRequestComponent} from './response-request/response-request.component';
 import { UserService } from './user.service';
 import {UserProfilComponent} from './user-profil/user-profil.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 const routes: Routes = [
 	{ path:'',component:LoginComponent},
@@ -34,6 +36,8 @@ const routes: Routes = [
     { path: "listAllCourses", component : ListAllcourseComponent,canActivate:[UserService]},
 	{ path: "requests", component: ResponseRequestComponent,canActivate:[UserService]},
 	{path : "userProfil", component: UserProfilComponent, canActivate:[UserService]},
+	{path : "register",component:RegisterUserComponent},
+	{path : "forgotPassword",component:ForgotPasswordComponent},
   {path:"app", component:AppComponent},
 
 
