@@ -1,1 +1,21 @@
-<p>admin works!</p>
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Attendance Name</th>
+			<th scope="col">Date</th>
+			<th scope="col">Attendance Ratio</th>
+			<th scope="col"></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let obj of listArray;let i=index">
+			<th scope="row">{{ i + 1 }}</th>
+			<td>{{ obj}}</td>
+			
+			<td>
+				
+			</td>
+		</tr>
+	</tbody>
+</table>

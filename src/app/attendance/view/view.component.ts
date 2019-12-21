@@ -12,7 +12,7 @@ export class ViewComponent implements OnInit {
     constructor(private serviceCourses: CourseServiceService, private afAuth: AngularFireAuth) { }
 
     ngOnInit() {
-      this.afAuth.user.subscribe(user => this.serviceCourses.getAttendance(user).subscribe(Courses => this.dataCourses = Courses));
+      /*this.afAuth.user.subscribe(user => this.serviceCourses.getAttendance(user).subscribe(Courses => this.dataCourses = Courses));*/
 
     }
 

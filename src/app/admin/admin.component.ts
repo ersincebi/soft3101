@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminService } from './admin.service';
+import {AngularFireAuth} from '@angular/fire/auth';
 
 @Component({
   selector: 'app-admin',
@@ -6,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin.component.css']
 })
 export class AdminComponent implements OnInit {
-
-  constructor() { }
+  listArray: any[];
+  constructor(private rs : AdminService,private afAuth: AngularFireAuth) { }
 
   ngOnInit() {
+    this.afAuth.user.subscribe(user => this.rs.getRequests(user).subscribe(Request => this.listArray = Request));
+    
+    console.log(this.listArray);
+
   }
 
 }

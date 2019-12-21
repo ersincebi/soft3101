@@ -16,6 +16,7 @@ import {CourseComponent} from './course/course.component';
 import {ListAllcourseComponent} from './list-allcourse/list-allcourse.component';
 import {ResponseRequestComponent} from './response-request/response-request.component';
 import { UserService } from './user.service';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
 	{ path:'',component:LoginComponent},
@@ -32,7 +33,8 @@ const routes: Routes = [
 	{ path: "editTakedAttendance", component: EditAttendanceComponent ,canActivate:[UserService]},
     { path: "listAllCourses", component : ListAllcourseComponent,canActivate:[UserService]},
     { path: "requests", component: ResponseRequestComponent,canActivate:[UserService]},
-  {path:"app", component:AppComponent},
+    {path:"app", component:AppComponent},
+    {path:"admin",component:AdminComponent},
 
 
 ];
