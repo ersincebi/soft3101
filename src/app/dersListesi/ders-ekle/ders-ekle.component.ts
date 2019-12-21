@@ -15,7 +15,8 @@ categories:any[];
 constructor(public user: UserService, private fb:FormBuilder,private serviceCourses: CourseServiceService) {
   this.regiForm= this.fb.group({
   'DersinAdı':[null,Validators.required],
-  'DersinOgretmeni':[null,Validators.required]
+  'DersinOgretmeni':[null,Validators.required],
+  'OgretmenID':[null,Validators.required],
   })
   }
   ngOnInit() {
@@ -23,7 +24,8 @@ constructor(public user: UserService, private fb:FormBuilder,private serviceCour
   onSubmit(from){
     console.log(from)
     if(this.regiForm.valid){
-      this.serviceCourses.AddCourse(from.DersinAdı,from.DersinOgretmeni);
+      this.serviceCourses.AddCourse(from.DersinAdı,from.DersinOgretmeni,from.OgretmenID);
+    
     }
 
   }

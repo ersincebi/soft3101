@@ -12,8 +12,39 @@
     <tr *ngFor="let obj of dataCourses;let i=index">
       <th scope="row">{{i+1}}</th>
       <td>{{obj.Title}}</td>
-      <td>{{obj.ogretmen}}</td>
-      <td><button>Gönder</button> </td>
+      <td>{{obj.Teacher}}</td>
+      <td>{{obj.key}}</td>
+      <td><button (click)="getId(obj.key)" >YoklamaAl</button> </td>
     </tr>
   </tbody>
 </table>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">İsim</th>
+      <th scope="col">Statu</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let obj1 of students;let i=index">
+      <th scope="row">{{i+1}}</th>
+      <td>{{obj1.isim}}</td>
+  
+
+      <td><button type="button" class="btn btn-secondary"(click)="getReq(obj1.key,true)">VAR </button>
+      <button type="button" class="btn btn-secondary"(click)="getReq(obj1.key,false)">Yok </button>
+      </td>
+    </tr>
+  
+
+  
+    <tr *ngFor="let z of name;let i=index">
+      <th scope="row">{{i+1}}</th>
+      <td>{{z.key}}</td>
+     
+    </tr>
+  </tbody>
+</table>
+
