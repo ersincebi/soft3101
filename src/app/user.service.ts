@@ -39,6 +39,24 @@ isOgrenciIsleri:Observable<boolean>=this.uid.pipe(
     }
   })
 );
+isOgrenci:Observable<boolean>=this.uid.pipe(
+  switchMap(uid=>{
+    if(!uid){
+      return observableOf(false);
+    }else{
+      return this.db.object<boolean>('/ogrenci/'+ uid).valueChanges()
+    }
+  })
+);
+isOgretmen:Observable<boolean>=this.uid.pipe(
+  switchMap(uid=>{
+    if(!uid){
+      return observableOf(false);
+    }else{
+      return this.db.object<boolean>('/ogretmen/'+ uid).valueChanges()
+    }
+  })
+);
   constructor(private afAuth:AngularFireAuth,private db :AngularFireDatabase, private router:Router) {
     
      this. afAuth.authState.subscribe(user => {this.saveUser(user); });}

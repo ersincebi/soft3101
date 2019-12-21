@@ -1,4 +1,4 @@
-<form [formGroup]="regiForm" (ngSubmit)="onSubmit(regiForm.value)">
+<form [formGroup]="regiForm" (ngSubmit)="onSubmit(regiForm.value)"  *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async) || (user.isOgretmen | async)">
   <div class="form-group" >
   <label for="exampleInputEmail1">DersinAdı</label>
   <input formControlName="DersinAdı" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >

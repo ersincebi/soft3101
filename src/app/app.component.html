@@ -1,5 +1,5 @@
 <body>
-    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async)">
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async)|| (user.isOgrenci | async) || (user.isOgretmen | async)">
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/liste">whenTheRingBells </a>
       <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async)">
       <ul class="navbar-nav px-3">
@@ -24,7 +24,7 @@
     </nav>
     <div class="container-fluid" >
       <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async)">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async)|| (user.isOgrenci | async) || (user.isOgretmen | async)">
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
               <li class="nav-item">
@@ -34,13 +34,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" routerLink="/liste">
+                <a class="nav-link" routerLink="/liste" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async) ">
                   <span data-feather="file"></span>
                   Öğrenci işleri
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" routerLink="/requests"> 
+                <a class="nav-link" routerLink="/requests" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async) || (user.isOgretmen | async)"> 
                   <span data-feather="shopping-cart"></span>
                   Istek listesi
                 </a>
@@ -52,13 +52,13 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" routerLink="/userProfil"> 
+                <a class="nav-link" routerLink="/userProfil" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async) || (user.isOgretmen | async)"> 
                   <span data-feather="bar-chart-2"></span>
-                  Profil
+                  TümKişilerProfil
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" routerLink="/dersEkle">
+                <a class="nav-link" routerLink="/dersEkle" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async) || (user.isOgretmen | async)">
                   <span data-feather="layers"></span>
                  dersEkle
                 </a>
@@ -106,7 +106,7 @@
 
           
 
-            <router-outlet></router-outlet>
+            <router-outlet ></router-outlet>
               
 
 
