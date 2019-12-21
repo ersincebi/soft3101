@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {map} from 'rxjs/operators';
 import {AngularFireDatabase} from '@angular/fire/database';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 @Injectable({
   providedIn: 'root'
@@ -46,4 +47,10 @@ export class CourseServiceService {
           onay: true
     });
   }
+ AddCourse(Title,Teacher){
+   this.db.list('AllCourses').push({
+     Title:Title,
+     Teacher:Teacher
+   })
+ }
 }

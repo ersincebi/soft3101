@@ -5,7 +5,6 @@ import { LoginComponent } from './login/login.component';
 import { DersEkleComponent } from './dersListesi/ders-ekle/ders-ekle.component';
 import { DersSilComponent } from './dersListesi/ders-sil/ders-sil.component';
 import { DersInfoComponent } from './dersListesi/ders-info/ders-info.component';
-import { DerseEkleComponent } from './dersListesi/derse-ekle/derse-ekle.component';
 import { CreateComponent } from './attendance/create/create.component';
 import { EditComponent } from './attendance/edit/edit.component';
 import { ViewComponent } from './attendance/view/view.component';
@@ -26,7 +25,6 @@ const routes: Routes = [
 	{ path: 'dersEkle', component:DersEkleComponent,canActivate:[UserService]},
 	{ path: "dersSil", component:DersSilComponent,canActivate:[UserService]},
 	{ path: "dersInfo", component:DersInfoComponent,canActivate:[UserService]},
-	{ path: "derseEkle", component: DerseEkleComponent ,canActivate:[UserService]},
     {path:"Oders", component:CourseComponent,canActivate:[UserService]},
 	{ path: "createAttendance", component: CreateComponent,canActivate:[UserService]},
 	{ path: "editAttendance", component: EditComponent,canActivate:[UserService]},
