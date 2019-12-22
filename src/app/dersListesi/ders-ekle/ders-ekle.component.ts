@@ -10,7 +10,7 @@ import {CourseServiceService} from '../../services/course/course-service.service
 })
 export class DersEkleComponent implements OnInit {
   regiForm:FormGroup;
-categories:any[];
+  dataCourses:any;
 
 constructor(public user: UserService, private fb:FormBuilder,private serviceCourses: CourseServiceService) {
   this.regiForm= this.fb.group({
@@ -20,13 +20,14 @@ constructor(public user: UserService, private fb:FormBuilder,private serviceCour
   })
   }
   ngOnInit() {
+    this.serviceCourses.getOgretmen().subscribe(courses => this.dataCourses = courses);
   }
   onSubmit(from){
     console.log(from)
     if(this.regiForm.valid){
       this.serviceCourses.AddCourse(from.DersinAdı,from.DersinOgretmeni,from.OgretmenID);
-    
     }
+  
 
   }
 }

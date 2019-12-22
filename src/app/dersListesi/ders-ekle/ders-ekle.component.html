@@ -1,4 +1,4 @@
-<form [formGroup]="regiForm" (ngSubmit)="onSubmit(regiForm.value)"  *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async) || (user.isOgretmen | async)">
+<form [formGroup]="regiForm" (ngSubmit)="onSubmit(regiForm.value)" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async)|| (user.isOgrenci | async) || (user.isOgretmen | async)">
   <div class="form-group" >
   <label for="exampleInputEmail1">DersinAdı</label>
   <input formControlName="DersinAdı" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" >
@@ -8,9 +8,15 @@
   <label for="exampleInputEmail1">DersinOgretmeni</label>
   <input formControlName="DersinOgretmeni" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
   </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">DersinOgretmeni</label>
-    <input formControlName="OgretmenID" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+
+    <div class="form-group" >
+      <label for="sel1">Select list (select one):</label>
+      <select class="form-control"id="sel1" formControlName="OgretmenID">
+        <option *ngFor="let obj of dataCourses" [value]="obj.key">{{obj.email}}</option>
+      </select>
+      <br>
+      
     </div>
   <button type="onSubmit" class="btn btn-primary">Submit </button>
   </form>
+  

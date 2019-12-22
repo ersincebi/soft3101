@@ -76,7 +76,6 @@ this.afAuth.auth.signOut();
     });
   }
   getCurrentUser(){
-
     return this.afAuth.authState;
   }
   canActivate():Observable<boolean>{

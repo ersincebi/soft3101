@@ -24,6 +24,15 @@ teacher="ogretmen";
       return  this.db.list('/AllCourses').snapshotChanges().pipe(
           map(changes => changes.map(c => ({key: c.payload.key, ...c.payload.val()}))));
   }
+  getOgretmen(){
+    return  this.db.list('/ogretmen').snapshotChanges().pipe(
+      map(changes => changes.map(c => ({key: c.payload.key, ...c.payload.val()}))));
+  }
+  getAdmin(){
+    return  this.db.list('/admin').snapshotChanges().pipe(
+      map(changes => changes.map(c => ({key: c.payload.key, ...c.payload.val()}))));
+  }
+  
     getItems() {
     return this.db.list('/requestCourses/').snapshotChanges();
     }
@@ -85,6 +94,7 @@ getMyStudents(x){
       .map(c => ({key: c.payload.key, ...c.payload.val()}))));
 
   }
+ 
 
   getAtt(studentid,courseid,attendance,date){
   
