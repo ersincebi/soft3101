@@ -52,7 +52,7 @@ teacher="ogretmen";
     return  this.db.list('/users/').snapshotChanges().pipe(map(changes => changes
         .map(c => ({key: c.payload.key, ...c.payload.val()}))));
 }
-  responseRequest(uid, key){
+  responseRequest(uid, key,emaill){
       this.db.object('/users/' + uid + '/Courses/' + key).update({
           Title:this.title,
           Teacher:this.teacher,
@@ -60,8 +60,22 @@ teacher="ogretmen";
           
     });
     this.db.object('/denemeDersler/' + key + '/students/' + uid).update({
-      isim: true //düzelt
+      email: emaill //düzelt
 });
+  }
+  ogrenciYap(key,email,name){
+    var x=this.db.createPushId();
+    this.db.object('/ogrenci/'+key).update({
+      email:email,
+      name:name
+    });
+  }
+  ogretmenYap(key,email,name){
+    var x=this.db.createPushId();
+    this.db.object('/ogretmen/'+key).update({
+      email:email,
+      name:name
+    });
   }
  AddCourse(Title,Teacher,uid){
    var x =this.db.createPushId();

@@ -59,7 +59,7 @@ isOgretmen:Observable<boolean>=this.uid.pipe(
 );
   constructor(private afAuth:AngularFireAuth,private db :AngularFireDatabase, private router:Router) {
     
-     this. afAuth.authState.subscribe(user => {this.saveUser(user); });}
+    }
   login(email, password){
 
 this.afAuth.auth.signInWithEmailAndPassword(email, password).then((result)=> this.router.navigate(['liste']));
@@ -68,10 +68,10 @@ this.afAuth.auth.signInWithEmailAndPassword(email, password).then((result)=> thi
   logout(){
 this.afAuth.auth.signOut();
   }
-  saveUser(user: firebase.User) {
+  saveUser(user: firebase.User,namee) {
     if (!user) { return; }
     this.db.object('/users/' + user.uid).update({
-      name: user.displayName,
+      name: namee,
       email: user.email
     });
   }
@@ -90,10 +90,10 @@ this.afAuth.auth.signOut();
       })
     )
   }
-  SignUp(email, password) {
+  SignUp(email, password,name) {
     return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
       .then((result) => {
-        this.saveUser(result.user);
+        this.saveUser(result.user,name);
         this.router.navigate(['']) //kayıt yapıldıgında nereye yönlendiricegini sec 
       }).catch((error) => {
         window.alert(error.message)

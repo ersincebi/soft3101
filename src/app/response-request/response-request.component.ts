@@ -62,7 +62,7 @@ count =0;
 
 
   }
-    applyRequest(uid, key){
-          this.cs.responseRequest(uid, key);  //sorun burda burda isim:true yi düzelt
+    applyRequest(uid, key,email){
+          this.cs.responseRequest(uid, key,email);  //sorun burda burda isim:true yi düzelt
     }
 }

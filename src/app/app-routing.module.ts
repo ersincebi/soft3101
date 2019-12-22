@@ -18,6 +18,7 @@ import { UserService } from './user.service';
 import {UserProfilComponent} from './user-profil/user-profil.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import {AtamaComponent} from './atama/atama.component';
 
 const routes: Routes = [
 	{ path:'',component:LoginComponent},
@@ -36,6 +37,7 @@ const routes: Routes = [
 	{path : "userProfil", component: UserProfilComponent, canActivate:[UserService]},
 	{path : "register",component:RegisterUserComponent},
 	{path : "forgotPassword",component:ForgotPasswordComponent},
+	{path : "atama",component:AtamaComponent, canActivate:[UserService]},
   {path:"app", component:AppComponent},
 
 

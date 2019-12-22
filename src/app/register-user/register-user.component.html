@@ -1,11 +1,15 @@
 <div class="formGroup">
     <input type="email" class="formControl" placeholder="Email Address" #userEmail required>
   </div>
+  <div class="formGroup">
+    <input type="ad" class="formControl" placeholder="ad" #userN required>
+  </div>
 
   <div class="formGroup">
     <input type="password" class="formControl" placeholder="Password" #userPwd required>
   </div>
 
+
   <div class="formGroup">
-    <input type="button" class="btn btnPrimary" value="Sign Up" (click)="us.SignUp(userEmail.value, userPwd.value)">
+    <input type="button" class="btn btnPrimary" value="Sign Up" (click)="us.SignUp(userEmail.value, userPwd.value,userN.value)">
   </div>
