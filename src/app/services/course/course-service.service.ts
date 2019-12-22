@@ -12,7 +12,7 @@ teacher="ogretmen";
   constructor(private db: AngularFireDatabase) { }
 
     getAllcourses(user: firebase.User) {
-       return  this.db.list('/users/' + user.uid + '/Courses').snapshotChanges().pipe(map(changes => changes
+       return  this.db.list('/ogretmen/' + user.uid + '/Courses').snapshotChanges().pipe(map(changes => changes
            .map(c => ({key: c.payload.key, ...c.payload.val()}))));
   }
 
@@ -83,7 +83,7 @@ teacher="ogretmen";
     Title: Title,
     Teacher:Teacher
   });
-  this.db.object('/ogretmen/' + uid + '/' +x).update({
+  this.db.object('/ogretmen/' + uid + '/Courses/' +x).update({
   Title: Title,
   Teacher:Teacher
 });
