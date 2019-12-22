@@ -4,7 +4,6 @@ import { Route, RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
-
 import { ListeComponent } from './dersListesi/liste.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DersSilComponent } from './dersListesi/ders-sil/ders-sil.component';
@@ -13,7 +12,6 @@ import { DersEkleComponent } from './dersListesi/ders-ekle/ders-ekle.component';
 import { AngularFireModule } from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
-
 import { AdminComponent } from './admin/admin.component';
 import { CreateComponent } from './attendance/create/create.component';
 import { EditComponent } from './attendance/edit/edit.component';
@@ -46,8 +44,10 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     EditAttendanceComponent,
     CourseComponent,
     ListAllcourseComponent,
-    ResponseRequestComponent
-
+    ResponseRequestComponent,
+    UserProfilComponent,
+    RegisterUserComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     NgbModule,
