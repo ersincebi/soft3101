@@ -16,7 +16,8 @@ export class AdminService {
 
   getRequests(user: firebase.User) {
       
-    return  this.db.list('/Requests/').snapshotChanges();
+    return  this.db.list('/Requests/').snapshotChanges().pipe(map(changes => changes
+        .map(c => ({key: c.payload.key, ...c.payload.val()}))));
     
     
 }

@@ -18,6 +18,8 @@ import { UserService } from './user.service';
 import {UserProfilComponent} from './user-profil/user-profil.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AdminComponent } from './admin/admin.component';
+import { AdminService } from './admin/admin.service';
 
 const routes: Routes = [
 	{ path:'',component:LoginComponent},
@@ -36,7 +38,8 @@ const routes: Routes = [
 	{path : "userProfil", component: UserProfilComponent, canActivate:[UserService]},
 	{path : "register",component:RegisterUserComponent},
 	{path : "forgotPassword",component:ForgotPasswordComponent},
-  {path:"app", component:AppComponent},
+    {path:"app", component:AppComponent},
+    {path:"admin",component:AdminComponent},
 
 
 ];
