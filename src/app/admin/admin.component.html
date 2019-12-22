@@ -10,10 +10,12 @@
 		<tr *ngFor="let obj of listArray;let i=index">
 			<th scope="row">{{ i + 1 }}</th>
 			<td>{{ obj.key}}</td>
-		    <td>{{obj.Value}}</td>
+		    <td>{{obj.value}}</td>
 			<td>
 				
-			</td>
+            </td>
+            <button (click) ="updateT(1)">Apply</button>
+            <button (click) ="updateF(obj)">Reject</button>
 		</tr>
 	</tbody>
 </table>

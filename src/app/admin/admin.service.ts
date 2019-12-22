@@ -12,9 +12,11 @@ export class AdminService {
     
   constructor(private db : AngularFireDatabase) { }
    
+    
+
   getRequests(user: firebase.User) {
       
-    return  this.db.list('/Requests/1').snapshotChanges();
+    return  this.db.list('/Requests/').snapshotChanges();
     
     
 }
@@ -23,8 +25,12 @@ export class AdminService {
      
    }
 
-   updateFirst(key){
-       this.db.object('Requests/'+key+'/').set('false');
+   updateF(key){
+       this.db.object('Requests/'+key+'/isApproved').update('false');
+   }
+
+   updateT(key){
+       this.db.object('Requests/'+key+'/isApproved').update('true');
    }
 
    
