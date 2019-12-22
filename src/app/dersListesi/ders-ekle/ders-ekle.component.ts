@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/user.service';
+import { FormGroup,FormBuilder,Validators } from '@angular/forms';
+import {CourseServiceService} from '../../services/course/course-service.service';
 
 @Component({
   selector: 'app-ders-ekle',
@@ -7,10 +9,25 @@ import { UserService } from 'src/app/user.service';
   styleUrls: ['./ders-ekle.component.css']
 })
 export class DersEkleComponent implements OnInit {
+  regiForm:FormGroup;
+  dataCourses:any;
 
-  constructor(public user: UserService) { }
-
-  ngOnInit() {
+constructor(public user: UserService, private fb:FormBuilder,private serviceCourses: CourseServiceService) {
+  this.regiForm= this.fb.group({
+  'DersinAdı':[null,Validators.required],
+  'DersinOgretmeni':[null,Validators.required],
+  'OgretmenID':[null,Validators.required],
+  })
   }
+  ngOnInit() {
+    this.serviceCourses.getOgretmen().subscribe(courses => this.dataCourses = courses);
+  }
+  onSubmit(from){
+    console.log(from)
+    if(this.regiForm.valid){
+      this.serviceCourses.AddCourse(from.DersinAdı,from.DersinOgretmeni,from.OgretmenID);
+    }
+  
 
+  }
 }

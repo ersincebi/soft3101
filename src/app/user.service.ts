@@ -39,15 +39,31 @@ isOgrenciIsleri:Observable<boolean>=this.uid.pipe(
     }
   })
 );
+isOgrenci:Observable<boolean>=this.uid.pipe(
+  switchMap(uid=>{
+    if(!uid){
+      return observableOf(false);
+    }else{
+      return this.db.object<boolean>('/ogrenci/'+ uid).valueChanges()
+    }
+  })
+);
+isOgretmen:Observable<boolean>=this.uid.pipe(
+  switchMap(uid=>{
+    if(!uid){
+      return observableOf(false);
+    }else{
+      return this.db.object<boolean>('/ogretmen/'+ uid).valueChanges()
+    }
+  })
+);
   constructor(private afAuth:AngularFireAuth,private db :AngularFireDatabase, private router:Router) {
     
      this. afAuth.authState.subscribe(user => {this.saveUser(user); });}
   login(email, password){
 
-this.afAuth.auth.signInWithEmailAndPassword(email, password);
-if(this.afAuth.authState!=null){
-  this.router.navigate(['liste'])
-}
+this.afAuth.auth.signInWithEmailAndPassword(email, password).then((result)=> this.router.navigate(['liste']));
+
   }
   logout(){
 this.afAuth.auth.signOut();
@@ -60,7 +76,6 @@ this.afAuth.auth.signOut();
     });
   }
   getCurrentUser(){
-
     return this.afAuth.authState;
   }
   canActivate():Observable<boolean>{
@@ -74,6 +89,24 @@ this.afAuth.auth.signOut();
         }
       })
     )
+  }
+  SignUp(email, password) {
+    return this.afAuth.auth.createUserWithEmailAndPassword(email, password)
+      .then((result) => {
+        this.saveUser(result.user);
+        this.router.navigate(['']) //kayıt yapıldıgında nereye yönlendiricegini sec 
+      }).catch((error) => {
+        window.alert(error.message)
+      })
+  }
+
+  ForgotPassword(passwordResetEmail) {
+    return this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail)
+    .then(() => {
+      window.alert('Password reset email sent, check your inbox.');
+    }).catch((error) => {
+      window.alert(error)
+    })
   }
 
 }

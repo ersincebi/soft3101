@@ -9,7 +9,6 @@ import { ListeComponent } from './dersListesi/liste.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { DersSilComponent } from './dersListesi/ders-sil/ders-sil.component';
 import { DersInfoComponent } from './dersListesi/ders-info/ders-info.component';
-import { DerseEkleComponent } from './dersListesi/derse-ekle/derse-ekle.component';
 import { DersEkleComponent } from './dersListesi/ders-ekle/ders-ekle.component';
 import { AngularFireModule } from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
@@ -24,6 +23,11 @@ import { EditAttendanceComponent } from './attendance/edit-attendance/edit-atten
 import { CourseComponent } from './course/course.component';
 import { ListAllcourseComponent } from './list-allcourse/list-allcourse.component';
 import { ResponseRequestComponent } from './response-request/response-request.component';
+import { UserProfilComponent } from './user-profil/user-profil.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+
 
 
 @NgModule({
@@ -35,8 +39,6 @@ import { ResponseRequestComponent } from './response-request/response-request.co
     DersEkleComponent,
     DersSilComponent,
     DersInfoComponent,
-    DerseEkleComponent,
-    AdminComponent,
     CreateComponent,
     EditComponent,
     ViewComponent,
@@ -51,6 +53,8 @@ import { ResponseRequestComponent } from './response-request/response-request.co
     NgbModule,
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(
       {
         apiKey: "AIzaSyAt-VAJ9bwNn7MPCjoNuJkkge1rETT_wGQ",

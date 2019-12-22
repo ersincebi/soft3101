@@ -21,10 +21,6 @@ export class AdminService {
     
 }
 
-   update(){
-     
-   }
-
    updateF(key){
        this.db.object('Requests/'+key+'/isApproved').update('false');
    }
