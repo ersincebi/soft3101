@@ -26,6 +26,7 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AtamaComponent } from './atama/atama.component';
+import { UserEditComponent } from './user-profil/user-edit/user-edit.component';
 
 
 
@@ -49,13 +50,15 @@ import { AtamaComponent } from './atama/atama.component';
     UserProfilComponent,
     RegisterUserComponent,
     ForgotPasswordComponent,
-    AtamaComponent
+    AtamaComponent,
+    UserEditComponent
   ],
   imports: [
     NgbModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    
     ReactiveFormsModule,
     AngularFireModule.initializeApp(
       {
@@ -73,7 +76,7 @@ import { AtamaComponent } from './atama/atama.component';
     AngularFireDatabaseModule,
 
   ],
-  providers: [],
+  providers: [UserProfilComponent,UserEditComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

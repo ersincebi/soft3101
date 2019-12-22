@@ -1,5 +1,5 @@
 
-<table class="table table-hover">
+<table class="table table-hover" *ngIf="(ogrenci==true) || (ogretmen==true)" >
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -14,7 +14,8 @@
       <td>{{obj.Title}}</td>
       <td>{{obj.Teacher}}</td>
       <td>{{obj.key}}</td>
-      <td><button (click)="getId(obj.key)" >YoklamaAl</button> </td>
+      <td><button (click)="getId(obj.key) " *ngIf="(ogretmen==true)" >YoklamaAl</button> </td>
+      <td><button (click)="getId(obj.key) " *ngIf="(ogrenci==true)" >View Detail</button> </td>
     </tr>
   </tbody>
 </table>

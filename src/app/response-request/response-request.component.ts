@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {CourseServiceService} from '../services/course/course-service.service';
 import {AngularFireAuth} from '@angular/fire/auth';
+import {AngularFireDatabase} from '@angular/fire/database';
+import {UserService} from '../user.service';
+import {Router}  from '@angular/router';
 
 @Component({
   selector: 'app-response-request',
@@ -10,9 +13,13 @@ import {AngularFireAuth} from '@angular/fire/auth';
 export class ResponseRequestComponent implements OnInit {
 listArray: Array<Object>;
 listRequest: Array<String>;
-  constructor(private cs: CourseServiceService , private afAuth: AngularFireAuth) { }
+admin:boolean=false;
+ogrencisleri:boolean=false;
+userTemp:firebase.User
+  constructor(public user:UserService,private db:AngularFireDatabase,private cs: CourseServiceService , private afAuth: AngularFireAuth,private router:Router) { }
 count =0;
   ngOnInit() {
+    this.user.getCurrentUser().subscribe(userTemp=>this.userTemp=userTemp);
       const z = [];
        this.listArray = [];
 
@@ -61,6 +68,32 @@ count =0;
       });
 
 
+      this.db.list('/admin/').snapshotChanges().subscribe(items=>{
+        items.forEach(values => {
+         let key = values.key;
+         if(this.userTemp.uid==key){
+          this.admin=true;
+          console.log(key)
+          console.log(this.userTemp.uid)
+         }     
+       });
+
+      });
+
+      this.db.list('/ogrenciIsleri/').snapshotChanges().subscribe(items=>{
+        items.forEach(values => {
+         let key = values.key;
+         if(this.userTemp.uid==key){
+          this.ogrencisleri=true;
+          console.log(key)
+          console.log(this.userTemp.uid)
+         }     
+       });
+
+      });
+      if((this.admin==false) || (this.ogrencisleri==false) ){
+        this.router.navigate(['liste']);
+      }
   }
     applyRequest(uid, key,email){
           this.cs.responseRequest(uid, key,email);  //sorun burda burda isim:true yi düzelt

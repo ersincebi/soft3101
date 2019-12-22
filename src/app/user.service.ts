@@ -11,7 +11,8 @@ import {CanActivate, Router} from '@angular/router'
 })
 
 export class UserService implements CanActivate {
-
+temp:any;
+editId:any;
 uid = this.afAuth.authState.pipe(
   map(authState => {
     if(!authState){
@@ -57,6 +58,11 @@ isOgretmen:Observable<boolean>=this.uid.pipe(
     }
   })
 );
+editProfil(email,uid){
+  this.temp=email;
+  this.editId=uid
+  console.log(this.temp);
+}
   constructor(private afAuth:AngularFireAuth,private db :AngularFireDatabase, private router:Router) {
     
     }

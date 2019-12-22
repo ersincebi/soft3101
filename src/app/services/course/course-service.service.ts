@@ -10,12 +10,16 @@ export class CourseServiceService {
 title="angular";
 teacher="ogretmen";
   constructor(private db: AngularFireDatabase) { }
-
+    
     getAllcourses(user: firebase.User) {
        return  this.db.list('/ogretmen/' + user.uid + '/Courses').snapshotChanges().pipe(map(changes => changes
            .map(c => ({key: c.payload.key, ...c.payload.val()}))));
   }
-
+  getAllcoursesStudent(user: firebase.User) {
+    return  this.db.list('/ogrenci/' + user.uid + '/Courses').snapshotChanges().pipe(map(changes => changes
+        .map(c => ({key: c.payload.key, ...c.payload.val()}))));
+}
+ 
   getAttendance(user: firebase.User) {
        return  this.db.list('/Courses/' + user.uid + ':' ).snapshotChanges().pipe(map(changes => changes
            .map(c => ({key: c.payload.key, ...c.payload.val()}))));
@@ -48,12 +52,18 @@ teacher="ogretmen";
           uid: user.uid
     });
   }
+
+  getAllStudentProfile(user: firebase.User) {
+    return  this.db.list('/ogrenci/').snapshotChanges().pipe(map(changes => changes
+        .map(c => ({key: c.payload.key, ...c.payload.val()}))));
+}
   getAllUsers(user: firebase.User) {
     return  this.db.list('/users/').snapshotChanges().pipe(map(changes => changes
         .map(c => ({key: c.payload.key, ...c.payload.val()}))));
 }
+
   responseRequest(uid, key,emaill){
-      this.db.object('/users/' + uid + '/Courses/' + key).update({
+      this.db.object('/ogrenci/' + uid + '/Courses/' + key).update({
           Title:this.title,
           Teacher:this.teacher,
           onay: true
@@ -119,4 +129,13 @@ getMyStudents(x){
    this.db.object('denemeDersler/' + courseid+'/attendance/'+studentid+'/'+date).set(attendance);
 
   }
+  
+  editStudent(name,uid){
+    this.db.object('/ogrenci/'+uid).update({
+      name:name
+    });
+ 
+   }
+
+  
 }
