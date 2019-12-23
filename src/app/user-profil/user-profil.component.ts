@@ -19,6 +19,7 @@ export class UserProfilComponent implements OnInit {
 admin:boolean=false;
 ogrencisleri:boolean=false;
 ogrenci:boolean=false;
+ogretmen:boolean=false;
   constructor(private cs: CourseServiceService , private afAuth: AngularFireAuth ,private db:AngularFireDatabase,private user:UserService,private router:Router) { }
 
   ngOnInit() {
@@ -50,6 +51,17 @@ ogrenci:boolean=false;
        let key = values.key;
        if(this.userTemp.uid==key){
         this.ogrenci=true;
+        console.log(key)
+        console.log(this.userTemp.uid)
+       }     
+     });
+  
+    });
+    this.db.list('/ogretmen/').snapshotChanges().subscribe(items=>{
+      items.forEach(values => {
+       let key = values.key;
+       if(this.userTemp.uid==key){
+        this.ogretmen=true;
         console.log(key)
         console.log(this.userTemp.uid)
        }     

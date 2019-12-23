@@ -50,7 +50,7 @@ teacher="ogretmen";
       this.db.object('/requestCourses/' + user.uid + '/' + key).update({
           email: user.email,
           uid: user.uid
-    });
+    }).then(()=>window.alert('Ders İsteği Gönderildi'));
   }
 
   getAllStudentProfile(user: firebase.User) {
@@ -142,7 +142,8 @@ getMyStudents(x){
      date : attendance
    });*/
 
-   this.db.object('denemeDersler/' + courseid+'/attendance/'+studentid+'/'+date).set(attendance);
+   this.db.object('denemeDersler/' + courseid+'/attendance/'+studentid+'/'+date).update({
+     statu:attendance});
 
   }
   
