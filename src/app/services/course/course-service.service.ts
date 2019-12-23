@@ -87,6 +87,13 @@ teacher="ogretmen";
       name:name
     });
   }
+  ogrenciIsleriYap(key,email,name){
+    var x=this.db.createPushId();
+    this.db.object('/ogrenciIsleri/'+key).update({
+      email:email,
+      name:name
+    });
+  }
  AddCourse(Title,Teacher,uid){
    var x =this.db.createPushId();
    this.db.object('/AllCourses/' + x).update({

@@ -15,6 +15,7 @@ listArray: Array<Object>;
 listRequest: Array<String>;
 admin:boolean=false;
 ogrencisleri:boolean=false;
+ogrenci:boolean=false;
 userTemp:firebase.User
   constructor(public user:UserService,private db:AngularFireDatabase,private cs: CourseServiceService , private afAuth: AngularFireAuth,private router:Router) { }
 count =0;
@@ -91,9 +92,17 @@ count =0;
        });
 
       });
-      if((this.admin==false) || (this.ogrencisleri==false) ){
-        this.router.navigate(['liste']);
-      }
+      this.db.list('/ogrenci/').snapshotChanges().subscribe(items=>{
+        items.forEach(values => {
+         let key = values.key;
+         if(this.userTemp.uid==key){
+          this.ogrenci=true;
+          console.log(key)
+          console.log(this.userTemp.uid)
+         }     
+       });
+
+      });
   }
     applyRequest(uid, key,email){
           this.cs.responseRequest(uid, key,email);  //sorun burda burda isim:true yi düzelt

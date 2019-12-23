@@ -1,4 +1,4 @@
-  <table class="table table-hover" *ngIf="(admin==true) || (ogrencisleri==true)">
+  <table class="table table-hover"*ngIf="(admin==true) || (ogrencisleri==true)" >
   <thead>
     <tr>
      
@@ -10,7 +10,7 @@
 
           <tr *ngFor="let z of obj;let i=index">
             
-        <div id="dersler" *ngIf="i>0">{{z}} <button type="button" class="btn btn-secondary" *ngIf="(i!=0) && (i!=1)" (click)="applyRequest(obj[0],z,obj[1])">Ders'e kayıt et </button></div>
+        <div id="dersler" *ngIf="i>0">{{z}} <button type="button" class="btn btn-secondary"  *ngIf="(i!=0) && (i!=1)" (click)="applyRequest(obj[0],z,obj[1])" >Ders'e kayıt et </button></div>
     </tr>
 
        </th>

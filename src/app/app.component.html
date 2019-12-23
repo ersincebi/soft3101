@@ -1,23 +1,13 @@
 <body>
     <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow" >
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/liste">whenTheRingBells </a>
-      <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async)">
-      <ul class="navbar-nav px-3">
-          <li  ngbDropdown class="nav-item dropdown">
-              <a ngbDropdownToggle class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async)">Dropdown</a>
-              <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-          
-        </ul>
+      
+      
       
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap">
-          
-          <a class="nav-link" (click)="user.logout()"  href="#" >Sign out </a>
+
+          <a class="nav-link" (click)="user.logout()"  href="#" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async) || userTemp" >Sign out </a>
         </li>
         
       </ul>
@@ -34,19 +24,20 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" routerLink="/liste" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async) ">
-                  <span data-feather="file"></span>
-                  Öğrenci işleri
+                <a class="nav-link" routerLink="/Oders" *ngIf="(user.isOgrenci | async) || (user.isOgretmen | async) "> 
+                  <span data-feather="shopping-cart"></span>
+                  Dersler
                 </a>
               </li>
+            
               <li class="nav-item">
-                <a class="nav-link" routerLink="/requests" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async) || (user.isOgretmen | async)"> 
+                <a class="nav-link" routerLink="/requests" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async)"> 
                   <span data-feather="shopping-cart"></span>
                   Istek listesi
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" routerLink="/listAllCourses">
+                <a class="nav-link" routerLink="/listAllCourses" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async)|| (user.isOgrenci | async) || (user.isOgretmen | async)">
                   <span data-feather="users"></span>
                   TümDersleriGörüntüle
                 </a>
@@ -59,52 +50,22 @@
               </li>
               
               <li class="nav-item">
-                <a class="nav-link" routerLink="/dersEkle" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async) || (user.isOgretmen | async)">
+                <a class="nav-link" routerLink="/dersEkle" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async)">
                   <span data-feather="layers"></span>
                  dersEkle
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" routerLink="/atama" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async) || (user.isOgretmen | async)">
+                <a class="nav-link" routerLink="/atama" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async)">
                   <span data-feather="layers"></span>
-                  atama
+                  Yetkilendirme
                 </a>
               </li>
             </ul>
             
   
-            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-              <span>Saved reports</span>
-              <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-                <span data-feather="plus-circle"></span>
-              </a>
-            </h6>
-            <ul class="nav flex-column mb-2">
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Current month
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Last quarter
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Social engagement
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  <span data-feather="file-text"></span>
-                  Year-end sale
-                </a>
-              </li>
-            </ul>
+            
+            
           </div>
         </nav>
   
