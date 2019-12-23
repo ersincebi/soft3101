@@ -25,6 +25,7 @@ import { UserProfilComponent } from './user-profil/user-profil.component';
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { StudentaffairComponent } from './studentaffair/studentaffair.component';
 
 
 
@@ -47,7 +48,8 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
     ResponseRequestComponent,
     UserProfilComponent,
     RegisterUserComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    StudentaffairComponent
   ],
   imports: [
     NgbModule,

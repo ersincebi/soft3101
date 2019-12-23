@@ -12,10 +12,21 @@ export class AdminComponent implements OnInit {
   constructor(private rs : AdminService,private afAuth: AngularFireAuth) { }
 
   ngOnInit() {
-    this.afAuth.user.subscribe(user => this.rs.getRequests(user).subscribe(Request => this.listArray = Request));
+    this.afAuth.user.subscribe(
+        user => this.rs.getRequests(user)
+                .subscribe(Request =>
+                    this.listArray = Request
+                    ));
     
     console.log(this.listArray);
 
   }
+  updateF(key){
+      this.rs.update(key,'Rejected')
+  }
+
+  updateT(key){
+    this.rs.update(key,'Approved')
+  }   
 
 }

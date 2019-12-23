@@ -14,21 +14,21 @@ export class AdminService {
    
     
 
-  getRequests(user: firebase.User) {
+    getRequests(user: firebase.User) {
       
     return  this.db.list('/Requests/').snapshotChanges().pipe(map(changes => changes
         .map(c => ({key: c.payload.key, ...c.payload.val()}))));
     
     
-}
+    }
 
-   updateF(key){
-       this.db.object('Requests/'+key+'/isApproved').update('false');
-   }
+    update(key, isApproved){
+        this.db.object('Requests/'+key).update({
+            isApproved : isApproved
+        });
+    }
 
-   updateT(key){
-       this.db.object('Requests/'+key+'/isApproved').update('true');
-   }
+ 
 
    
 }

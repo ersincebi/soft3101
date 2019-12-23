@@ -3,20 +3,21 @@
 		<tr>
 			<th scope="col">#</th>
 			<th scope="col">Request's Name</th>
-			<th scope="col">Request's Value</th>
+            <th scope="col">Details</th>
+            <th scope="col">Status</th>
 		</tr>
 	</thead>
 	<tbody>
 		<tr *ngFor="let obj of listArray;let i=index">
 			<th scope="row">{{ i + 1 }}</th>
-			<td>{{ obj.key}}</td>
-		    <td>{{obj.value}}</td>
-			<td>{{ obj.name}}</td>
+		    <td>{{obj.Title}}</td>
+            <td>{{obj.RequestDetail}}</td>
+            <td>{{obj.isApproved}}</td>
 			<td>
 				
             </td>
-            <button (click) ="updateT(2)">Apply</button>
-            <button (click) ="updateF(2)">Reject</button>
+            <button (click)="updateT(obj.key)">Apply</button>
+            <button (click)="updateF(obj.key)">Reject</button>
 		</tr>
 	</tbody>
 </table>

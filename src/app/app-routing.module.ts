@@ -20,6 +20,7 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminService } from './admin/admin.service';
+import { StudentaffairComponent } from './studentaffair/studentaffair.component';
 
 const routes: Routes = [
 	{ path:'',component:LoginComponent},
@@ -39,7 +40,8 @@ const routes: Routes = [
 	{path : "register",component:RegisterUserComponent},
 	{path : "forgotPassword",component:ForgotPasswordComponent},
     {path:"app", component:AppComponent},
-    {path:"admin",component:AdminComponent},
+    {path:"admin",component:AdminComponent,canActivate:[UserService]},
+    {path:'studentaffair',component:StudentaffairComponent,canActivate:[UserService]},
 
 
 ];

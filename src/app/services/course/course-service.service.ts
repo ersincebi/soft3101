@@ -48,6 +48,18 @@ teacher="ogretmen";
           uid: user.uid
     });
   }
+
+  addRequests(requestDetail,Title){
+    var x = this.db.createPushId();
+    console.log(x)
+    this.db.object('/Requests/' + x).update({
+      Title: Title,
+      RequestDetail: requestDetail,
+      isApproved : 'Non-Decided'
+    });
+
+}
+
   getAllUsers(user: firebase.User) {
     return  this.db.list('/users/').snapshotChanges().pipe(map(changes => changes
         .map(c => ({key: c.payload.key, ...c.payload.val()}))));

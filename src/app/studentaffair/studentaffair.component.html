@@ -1,0 +1,13 @@
+<form *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async)|| (user.isOgrenci | async) || (user.isOgretmen | async)">
+    <div class="form-group">
+        <label for="Title">Title</label>
+        <input class="form-control" #title>
+        </div>
+    <div class="form-group" >
+    <label for="RequestDetail">Request Detail</label>
+    <input class="form-control" #detail>    
+    </div>   
+        
+    <button type="onSubmit" class="btn btn-primary" (click)="onSubmit(detail.value,title.value)">Submit </button>
+</form>
+    
