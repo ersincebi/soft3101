@@ -169,7 +169,9 @@ getMyStudents(x){
     console.log("girdi")
    this.db.object('/ogrenci/'+user.uid+'/Courses/'+courseid).remove().then(()=>this.db.object('/denemeDersler/'+courseid+'/students/'+user.uid).remove()
    .then(()=>this.db.object('/denemeDersler/'+courseid+'/attendance/'+user.uid).remove())
+   
    );
+   alertify.error("Ders Silindi");
   }
   
 }
