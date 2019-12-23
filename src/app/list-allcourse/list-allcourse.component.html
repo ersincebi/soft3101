@@ -13,6 +13,7 @@
       <td>{{obj.Title}}</td>
       <td>{{obj.Teacher}}</td>
       <td><button type="button" class="btn btn-secondary"(click)="getReq(obj.key)" *ngIf="(ogrenci==true)">Gönder </button> </td>
+      <td><button type="button" class="btn btn-secondary"(click)="remove(obj.key)" *ngIf="(admin==true)">Sil </button> </td>
     </tr>
   </tbody>
 </table>

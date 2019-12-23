@@ -68,7 +68,9 @@ editProfil(email,uid){
     }
   login(email, password){
 
-this.afAuth.auth.signInWithEmailAndPassword(email, password).then((result)=> this.router.navigate(['liste']));
+this.afAuth.auth.signInWithEmailAndPassword(email, password).then((result)=> this.router.navigate(['myProfil'])).catch((error) => {
+  window.alert(error.message)
+});
 
   }
   logout(){

@@ -56,4 +56,8 @@ ogrenci:boolean=false;
   getReq(key){
        this.afAuth.user.subscribe(user => this.cs.sendRequest(user, key));
   }
+  remove(key){
+    if(window.confirm('Silmek istediğinize Emin misiniz?!!????'))this.cs.removeCourse(key);
+
+  }
 }

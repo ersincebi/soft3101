@@ -15,6 +15,7 @@ newdate :string;
 courseid:any;
 userTemp:firebase.User
 ogrenci:boolean=false;
+viewDetails:any;
 
   constructor(public user:UserService,private serviceCourses: CourseServiceService, private afAuth: AngularFireAuth,private db:AngularFireDatabase) { }
 students:any;
@@ -68,5 +69,7 @@ ogretmen:boolean=false;
     getReq(studentid,attandance){
       this.serviceCourses.getAtt(studentid,this.courseid,attandance,this.newdate)  
       }
-
+      getAttDetails(ıd){
+        this.afAuth.user.subscribe(user => this.serviceCourses.getAttDetails(ıd,user).subscribe(detail => this.viewDetails = detail));
+      }
 }

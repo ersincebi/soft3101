@@ -15,12 +15,12 @@
       <td>{{obj.Teacher}}</td>
       <td>{{obj.key}}</td>
       <td><button (click)="getId(obj.key) " *ngIf="(ogretmen==true)" >YoklamaAl</button> </td>
-      <td><button (click)="getId(obj.key) " *ngIf="(ogrenci==true)" >View Detail</button> </td>
+      <td><button (click)="getAttDetails(obj.key) " *ngIf="(ogrenci==true)" >View Detail</button> </td>
     </tr>
   </tbody>
 </table>
 
-<table class="table table-hover">
+<table class="table table-hover"*ngIf="(ogretmen==true)">
   <thead>
     <tr>
       <th scope="col">#</th>
@@ -45,6 +45,23 @@
       <th scope="row">{{i+1}}</th>
       <td>{{z.key}}</td>
      
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-hover" *ngIf="(ogrenci==true)">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Tarih</th>
+      <th scope="col">Statu</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let obj2 of viewDetails;let i=index">
+      <th scope="row">{{i+1}}</th>
+      <td>{{obj2.key}}</td>
+      <td>{{obj2.statu}}</td>
     </tr>
   </tbody>
 </table>

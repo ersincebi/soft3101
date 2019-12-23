@@ -105,6 +105,7 @@ count =0;
       });
   }
     applyRequest(uid, key,email){
-          this.cs.responseRequest(uid, key,email);  //sorun burda burda isim:true yi düzelt
+          this.cs.responseRequest(uid, key,email);
+          window.location.reload();
     }
 }

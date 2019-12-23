@@ -27,6 +27,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AtamaComponent } from './atama/atama.component';
 import { UserEditComponent } from './user-profil/user-edit/user-edit.component';
+import { MyProfilComponent } from './user-profil/my-profil/my-profil.component';
 
 
 
@@ -51,7 +52,9 @@ import { UserEditComponent } from './user-profil/user-edit/user-edit.component';
     RegisterUserComponent,
     ForgotPasswordComponent,
     AtamaComponent,
-    UserEditComponent
+    UserEditComponent,
+    MyProfilComponent,
+   
   ],
   imports: [
     NgbModule,

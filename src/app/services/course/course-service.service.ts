@@ -67,32 +67,41 @@ teacher="ogretmen";
           Title:this.title,
           Teacher:this.teacher,
           onay: true
-          
     });
     this.db.object('/denemeDersler/' + key + '/students/' + uid).update({
       email: emaill //düzelt
 });
+this.db.object('/requestCourses/' + uid + '/' + key).remove();
   }
   ogrenciYap(key,email,name){
+    if(window.confirm(name+' Öğrenci Yapmak istediğinize Emin misiniz?')){
     var x=this.db.createPushId();
     this.db.object('/ogrenci/'+key).update({
       email:email,
       name:name
     });
+    this.db.object('users/'+key).remove();
+  }
   }
   ogretmenYap(key,email,name){
+    if(window.confirm(name+' Öğretmen Yapmak istediğinize Emin misiniz?')){
     var x=this.db.createPushId();
     this.db.object('/ogretmen/'+key).update({
       email:email,
       name:name
     });
+    this.db.object('users/'+key).remove();
+  }
   }
   ogrenciIsleriYap(key,email,name){
+    if(window.confirm(name+' Öğrenci işleri Yapmak istediğinize Emin misiniz?')){
     var x=this.db.createPushId();
     this.db.object('/ogrenciIsleri/'+key).update({
       email:email,
       name:name
     });
+    this.db.object('users/'+key).remove();
+  }
   }
  AddCourse(Title,Teacher,uid){
    var x =this.db.createPushId();
@@ -142,6 +151,14 @@ getMyStudents(x){
       name:name
     });
  
+   }
+
+   removeCourse(key){
+    this.db.object('AllCourses/' + key).remove();
+   }
+   getAttDetails(ıd,user:firebase.User){
+    return  this.db.list('/denemeDersler/'+ıd+'/attendance/'+user.uid).snapshotChanges().pipe(map(changes => changes
+      .map(c => ({key: c.payload.key, ...c.payload.val()}))));
    }
 
   
