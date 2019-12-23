@@ -165,6 +165,11 @@ getMyStudents(x){
     return  this.db.list('/denemeDersler/'+ıd+'/attendance/'+user.uid).snapshotChanges().pipe(map(changes => changes
       .map(c => ({key: c.payload.key, ...c.payload.val()}))));
    }
-
+   dropCourses(courseid,user:firebase.User){
+    console.log("girdi")
+   this.db.object('/ogrenci/'+user.uid+'/Courses/'+courseid).remove().then(()=>this.db.object('/denemeDersler/'+courseid+'/students/'+user.uid).remove()
+   .then(()=>this.db.object('/denemeDersler/'+courseid+'/attendance/'+user.uid).remove())
+   );
+  }
   
 }

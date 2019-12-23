@@ -82,4 +82,9 @@ ogretmen:boolean=false;
         this.afAuth.user.subscribe(user => this.serviceCourses.getAttDetails(ıd,user).subscribe(detail => this.viewDetails = detail));
         
       }
+      dropCourse(courseId){
+        if(window.confirm('Dersten Çekilmek İstediğine Emin misin?')){
+        this.afAuth.user.subscribe(user => this.serviceCourses.dropCourses(courseId,user));
+        }
+      }
 }
