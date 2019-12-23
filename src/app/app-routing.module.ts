@@ -21,6 +21,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { AdminComponent } from './admin/admin.component';
 import { AdminService } from './admin/admin.service';
 import { StudentaffairComponent } from './studentaffair/studentaffair.component';
+import { StudentaffairrequestsComponent } from './studentaffairrequests/studentaffairrequests.component';
 
 const routes: Routes = [
 	{ path:'',component:LoginComponent},
@@ -42,7 +43,7 @@ const routes: Routes = [
     {path:"app", component:AppComponent},
     {path:"admin",component:AdminComponent,canActivate:[UserService]},
     {path:'studentaffair',component:StudentaffairComponent,canActivate:[UserService]},
-
+    {path:'studentaffairrequests',component:StudentaffairrequestsComponent,canActivate:[UserService]},
 
 ];
 

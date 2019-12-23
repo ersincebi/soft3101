@@ -6,6 +6,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 })
 export class StudentaffairService {
 
+
   constructor(private db : AngularFireDatabase) { }
 
 
