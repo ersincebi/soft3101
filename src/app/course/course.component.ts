@@ -33,8 +33,7 @@ ogretmen:boolean=false;
           console.log(this.userTemp.uid)
           this.afAuth.user.subscribe(user => this.serviceCourses.getAllcoursesStudent(user).subscribe(courses => this.dataCourses = courses));
          
-         }     
-        
+         }       
        });
 
       });
