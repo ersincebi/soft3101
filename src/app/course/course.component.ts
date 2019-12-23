@@ -3,6 +3,8 @@ import {CourseServiceService} from '../services/course/course-service.service';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {UserService} from '../user.service';
+declare let alertify:any;
+
 @Component({
   selector: 'app-course',
   templateUrl: './course.component.html',
@@ -66,9 +68,18 @@ ogretmen:boolean=false;
     this.serviceCourses.getMyStudents(ıd).subscribe(courses => this.students = courses);
     }
     getReq(studentid,attandance){
+      console.log(attandance)
+      if(attandance==true){
+        alertify.success("Geldi");
+      }else if(attandance==false){
+        alertify.error("Gelmedi");
+      }
+      
       this.serviceCourses.getAtt(studentid,this.courseid,attandance,this.newdate)  
       }
       getAttDetails(ıd){
+       
         this.afAuth.user.subscribe(user => this.serviceCourses.getAttDetails(ıd,user).subscribe(detail => this.viewDetails = detail));
+        
       }
 }

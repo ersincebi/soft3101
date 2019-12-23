@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {map} from 'rxjs/operators';
 import {AngularFireDatabase} from '@angular/fire/database';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
+declare let alertify:any;
 
 @Injectable({
   providedIn: 'root'
@@ -50,7 +51,9 @@ teacher="ogretmen";
       this.db.object('/requestCourses/' + user.uid + '/' + key).update({
           email: user.email,
           uid: user.uid
-    }).then(()=>window.alert('Ders İsteği Gönderildi'));
+    })
+    alertify.success("Ders isteği gönderildi");
+
   }
 
   getAllStudentProfile(user: firebase.User) {
@@ -156,6 +159,7 @@ getMyStudents(x){
 
    removeCourse(key){
     this.db.object('AllCourses/' + key).remove();
+    alertify.error("Ders Silindi");
    }
    getAttDetails(ıd,user:firebase.User){
     return  this.db.list('/denemeDersler/'+ıd+'/attendance/'+user.uid).snapshotChanges().pipe(map(changes => changes

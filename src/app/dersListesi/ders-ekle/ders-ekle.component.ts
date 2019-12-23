@@ -3,6 +3,7 @@ import { UserService } from 'src/app/user.service';
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 import {CourseServiceService} from '../../services/course/course-service.service';
 import {AngularFireDatabase} from '@angular/fire/database';
+declare let alertify:any;
 
 @Component({
   selector: 'app-ders-ekle',
@@ -64,6 +65,7 @@ constructor(public user: UserService, private fb:FormBuilder,private serviceCour
     console.log(from)
     if(this.regiForm.valid){
       this.serviceCourses.AddCourse(from.DersinAdı,from.DersinOgretmeni,from.OgretmenID);
+      alertify.success("Ders Eklendi");
     }
   
 

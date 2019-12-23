@@ -3,6 +3,7 @@ import {UserService } from '../../user.service'
 import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 import {CourseServiceService} from '../../services/course/course-service.service';
 import {AngularFireDatabase} from '@angular/fire/database';
+declare let alertify:any;
 
 @Component({
   selector: 'app-user-edit',
@@ -70,6 +71,7 @@ ogrenci:boolean=false;
   edit(from){
     if(this.editForm.valid){
       this.cs.editStudent(from.studentName,this.id);
+      alertify.success("Isım Değiştirildi");
     }
     
   }

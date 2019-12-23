@@ -3,6 +3,7 @@ import {CourseServiceService} from '../services/course/course-service.service';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {UserService} from '../user.service';
+declare let alertify:any;
 
 @Component({
   selector: 'app-atama',
@@ -63,6 +64,7 @@ this.key=row.key
 this.email=row.email;
 console.log(this.key)
 this.cs.ogrenciYap(row.key,row.email,row.name);
+alertify.success("Ogrenci Yapıldı");
 }
 ogretmenYap(row)
 {
@@ -70,6 +72,7 @@ this.key=row.key
 this.email=row.email;
 console.log(this.key)
 this.cs.ogretmenYap(row.key,row.email,row.name);
+alertify.success("Ogretmen Yapıldı");
 }
 ogrenciIsleriyap(row)
 {
@@ -77,5 +80,6 @@ this.key=row.key
 this.email=row.email;
 console.log(this.key)
 this.cs.ogrenciIsleriYap(row.key,row.email,row.name);
+alertify.success("Ogrenci isleri Yapıldı");
 }
 }
