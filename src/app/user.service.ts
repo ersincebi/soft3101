@@ -4,7 +4,8 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import {map, switchMap } from 'rxjs/operators'
 import {auth} from 'firebase';
 import { AngularFireDatabase } from 'angularfire2/database';
-import {CanActivate, Router} from '@angular/router'
+import {CanActivate, Router} from '@angular/router';
+declare let alertify:any;
 @Injectable({
   providedIn: 'root',
 
@@ -69,7 +70,8 @@ editProfil(email,uid){
   login(email, password){
 
 this.afAuth.auth.signInWithEmailAndPassword(email, password).then((result)=> this.router.navigate(['myProfil'])).catch((error) => {
-  window.alert(error.message)
+  alertify.alert(error.message, function(){
+  });
 });
 
   }
@@ -104,16 +106,19 @@ this.afAuth.auth.signOut();
         this.saveUser(result.user,name);
         this.router.navigate(['']) //kayıt yapıldıgında nereye yönlendiricegini sec 
       }).catch((error) => {
-        window.alert(error.message)
+        alertify.alert(error.message, function(){
+        });
       })
   }
 
   ForgotPassword(passwordResetEmail) {
     return this.afAuth.auth.sendPasswordResetEmail(passwordResetEmail)
     .then(() => {
-      window.alert('Password reset email sent, check your inbox.');
+      alertify.alert('Password reset email sent, check your inbox.', function(){
+      });
     }).catch((error) => {
-      window.alert(error)
+      alertify.alert(error.message, function(){
+      });
     })
   }
 
