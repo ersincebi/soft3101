@@ -25,12 +25,17 @@ teacher="ogretmen";
        return  this.db.list('/Courses/' + user.uid + ':' ).snapshotChanges().pipe(map(changes => changes
            .map(c => ({key: c.payload.key, ...c.payload.val()}))));
   }
+  
   getAllcoursess(){
       return  this.db.list('/AllCourses').snapshotChanges().pipe(
           map(changes => changes.map(c => ({key: c.payload.key, ...c.payload.val()}))));
   }
   getOgretmen(){
     return  this.db.list('/ogretmen').snapshotChanges().pipe(
+      map(changes => changes.map(c => ({key: c.payload.key, ...c.payload.val()}))));
+  }
+  getOgrenci(){
+    return  this.db.list('/ogrenci').snapshotChanges().pipe(
       map(changes => changes.map(c => ({key: c.payload.key, ...c.payload.val()}))));
   }
   getAdmin(){
@@ -120,18 +125,16 @@ this.db.object('/denemeDersler/' + x).update({
   Title: Title,
 });
 
- /*  firebase.database().ref('/AllCourses/').child(String(x)).set("Title",Title)
-   firebase.database().ref('/AllCourses/').child(String(x)).set("Teacher",Teacher)
-   firebase.database().ref('/ogretmen/'+uid+'/').child(String(x)).set("Title",Title)
-   firebase.database().ref('/ogretmen/'+uid+'/').child(String(x)).set("Teacher",Teacher)
-   
-   this.db.list('AllCourses').push({
-     Title:Title,
-     Teacher:Teacher
-   })*/
- 
  }
- CoruseService
+ mesajYolla(key,baslık,mesaj){
+  var x =this.db.createPushId();
+  this.db.object('/ogrenci/' + key+'/Mesaj/'+x).update({
+    baslık:baslık,
+    Mesaj: mesaj,
+    boolean:false,
+  });
+}
+ 
 getMyStudents(x){
     return  this.db.list('/denemeDersler/'+x+'/students/').snapshotChanges().pipe(map(changes => changes
       .map(c => ({key: c.payload.key, ...c.payload.val()}))));
@@ -163,6 +166,10 @@ getMyStudents(x){
    }
    getAttDetails(ıd,user:firebase.User){
     return  this.db.list('/denemeDersler/'+ıd+'/attendance/'+user.uid).snapshotChanges().pipe(map(changes => changes
+      .map(c => ({key: c.payload.key, ...c.payload.val()}))));
+   }
+   mesajDetayları(id){
+    return  this.db.list('/ogrenci/'+id+'/mesaj/').snapshotChanges().pipe(map(changes => changes
       .map(c => ({key: c.payload.key, ...c.payload.val()}))));
    }
    dropCourses(courseid,user:firebase.User){

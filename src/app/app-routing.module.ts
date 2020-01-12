@@ -21,6 +21,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import {AtamaComponent} from './atama/atama.component';
 import {UserEditComponent } from './user-profil/user-edit/user-edit.component'
 import {MyProfilComponent} from './user-profil/my-profil/my-profil.component'
+import {MesajGComponent} from './user-profil/mesaj-g/mesaj-g.component'
 
 const routes: Routes = [
 	{ path:'',component:LoginComponent},
@@ -42,6 +43,7 @@ const routes: Routes = [
 	{path : "atama",component:AtamaComponent, canActivate:[UserService]},
 	{path : "editProfil",component:UserEditComponent, canActivate:[UserService]},
 	{path : "myProfil",component:MyProfilComponent, canActivate:[UserService]},
+	{path : "mesajGonder", component:MesajGComponent, canActivate:[UserService]},
 
   {path:"app", component:AppComponent},
 

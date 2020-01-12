@@ -28,6 +28,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AtamaComponent } from './atama/atama.component';
 import { UserEditComponent } from './user-profil/user-edit/user-edit.component';
 import { MyProfilComponent } from './user-profil/my-profil/my-profil.component';
+import { MesajGComponent } from './user-profil/mesaj-g/mesaj-g.component';
 
 
 
@@ -54,6 +55,7 @@ import { MyProfilComponent } from './user-profil/my-profil/my-profil.component';
     AtamaComponent,
     UserEditComponent,
     MyProfilComponent,
+    MesajGComponent,
    
   ],
   imports: [
