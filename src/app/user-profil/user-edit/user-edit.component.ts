@@ -4,6 +4,7 @@ import { FormGroup,FormBuilder,Validators } from '@angular/forms';
 import {CourseServiceService} from '../../services/course/course-service.service';
 import {AngularFireDatabase} from '@angular/fire/database';
 declare let alertify:any;
+import { Router} from '@angular/router';
 
 @Component({
   selector: 'app-user-edit',
@@ -19,7 +20,7 @@ export class UserEditComponent implements OnInit {
 admin:boolean=false;
 ogrencisleri:boolean=false;
 ogrenci:boolean=false;
-  constructor( private user:UserService, private fb:FormBuilder,private cs: CourseServiceService,private db:AngularFireDatabase) { 
+  constructor( private user:UserService, private fb:FormBuilder,private cs: CourseServiceService,private db:AngularFireDatabase,private router:Router) { 
     this.editForm= this.fb.group({
       'studentName':[null,Validators.required]
       })
@@ -71,7 +72,7 @@ ogrenci:boolean=false;
   edit(from){
     if(this.editForm.valid){
       this.cs.editStudent(from.studentName,this.id);
-      alertify.success("Isım Değiştirildi");
+      alertify.success("Isım Değiştirildi")
     }
     
   }

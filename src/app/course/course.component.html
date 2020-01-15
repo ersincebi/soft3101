@@ -16,7 +16,7 @@
       <td>{{obj.key}}</td>
       <td><button type="button" class="btn btn-secondary" (click)="getId(obj.key) " *ngIf="(ogretmen==true)" >YoklamaAl</button> </td>
       <td><button type="button" class="btn btn-secondary" (click)="getAttDetails(obj.key) " *ngIf="(ogrenci==true)" >View Detail</button> </td>
-      <td><button class="btn btn-secondary" (click)="dropCourse(obj.key) " *ngIf="(ogrenci==true)" >Drop Course</button> </td>
+   
     </tr>
   </tbody>
 </table>
@@ -63,7 +63,9 @@
       <th scope="row">{{i+1}}</th>
       <td>{{obj2.key}}</td>
       <td>{{obj2.statu}}</td>
+      
     </tr>
+    <p>durum={{durum}}</p>
   </tbody>
 </table>
 

@@ -3,6 +3,7 @@ import {map} from 'rxjs/operators';
 import {AngularFireDatabase} from '@angular/fire/database';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 declare let alertify:any;
+import { Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ declare let alertify:any;
 export class CourseServiceService {
 title="angular";
 teacher="ogretmen";
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase,private router:Router) { }
     
     getAllcourses(user: firebase.User) {
        return  this.db.list('/ogretmen/' + user.uid + '/Courses').snapshotChanges().pipe(map(changes => changes
@@ -123,7 +124,7 @@ this.db.object('/requestCourses/' + uid + '/' + key).remove();
 });
 this.db.object('/denemeDersler/' + x).update({
   Title: Title,
-});
+}).then((result)=> this.router.navigate(['myProfil']));;;
 
  }
  mesajYolla(key,baslık,mesaj){
@@ -132,7 +133,7 @@ this.db.object('/denemeDersler/' + x).update({
     baslık:baslık,
     Mesaj: mesaj,
     boolean:false,
-  });
+  }).then((result)=> this.router.navigate(['myProfil']));;;
 }
  
 getMyStudents(x){
@@ -156,7 +157,7 @@ getMyStudents(x){
   editStudent(name,uid){
     this.db.object('/ogrenci/'+uid).update({
       name:name
-    });
+    }).then((result)=> this.router.navigate(['myProfil']));;
  
    }
 

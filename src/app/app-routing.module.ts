@@ -22,6 +22,7 @@ import {AtamaComponent} from './atama/atama.component';
 import {UserEditComponent } from './user-profil/user-edit/user-edit.component'
 import {MyProfilComponent} from './user-profil/my-profil/my-profil.component'
 import {MesajGComponent} from './user-profil/mesaj-g/mesaj-g.component'
+import { SiteDetayComponent } from './login/site-detay/site-detay.component';
 
 const routes: Routes = [
 	{ path:'',component:LoginComponent},
@@ -44,6 +45,7 @@ const routes: Routes = [
 	{path : "editProfil",component:UserEditComponent, canActivate:[UserService]},
 	{path : "myProfil",component:MyProfilComponent, canActivate:[UserService]},
 	{path : "mesajGonder", component:MesajGComponent, canActivate:[UserService]},
+	{path : "detay", component:SiteDetayComponent},
 
   {path:"app", component:AppComponent},
 

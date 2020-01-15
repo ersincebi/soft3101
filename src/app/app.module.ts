@@ -29,6 +29,7 @@ import { AtamaComponent } from './atama/atama.component';
 import { UserEditComponent } from './user-profil/user-edit/user-edit.component';
 import { MyProfilComponent } from './user-profil/my-profil/my-profil.component';
 import { MesajGComponent } from './user-profil/mesaj-g/mesaj-g.component';
+import { SiteDetayComponent } from './login/site-detay/site-detay.component';
 
 
 
@@ -56,6 +57,7 @@ import { MesajGComponent } from './user-profil/mesaj-g/mesaj-g.component';
     UserEditComponent,
     MyProfilComponent,
     MesajGComponent,
+    SiteDetayComponent,
    
   ],
   imports: [

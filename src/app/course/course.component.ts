@@ -18,11 +18,16 @@ courseid:any;
 userTemp:firebase.User
 ogrenci:boolean=false;
 viewDetails:any;
+data:any;
+listTrue:Array<any>;
+durum="belirsiz";
+count=0;
 
   constructor(public user:UserService,private serviceCourses: CourseServiceService, private afAuth: AngularFireAuth,private db:AngularFireDatabase) { }
 students:any;
 ogretmen:boolean=false;
   ngOnInit() {
+    this.listTrue=[];
     this.user.getCurrentUser().subscribe(userTemp=>this.userTemp=userTemp);
     console.log(this.myDate)
     
@@ -51,11 +56,6 @@ ogretmen:boolean=false;
        });
 
       });
-    
-      
-      
-
-
   }
   getId(ıd){
     var dateObj = new Date();
@@ -78,9 +78,18 @@ ogretmen:boolean=false;
       this.serviceCourses.getAtt(studentid,this.courseid,attandance,this.newdate)  
       }
       getAttDetails(ıd){
-       
+        this.listTrue = [];
         this.afAuth.user.subscribe(user => this.serviceCourses.getAttDetails(ıd,user).subscribe(detail => this.viewDetails = detail));
         
+        
+        
+        this.afAuth.user.subscribe(user => this.serviceCourses.getAttDetails(ıd,user).subscribe(detail => {detail.forEach(c=>{
+          this.listTrue.push(c)
+        }
+        );if(detail.length>=4){this.listTrue.map(item=> { if(item.statu === false){ this.count++}});
+      if(this.count>=4)this.durum = "Kaldın"
+      }
+        console.log(this.count) ,this.count=0;}));
       }
       dropCourse(courseId){
         if(window.confirm('Dersten Çekilmek İstediğine Emin misin?')){

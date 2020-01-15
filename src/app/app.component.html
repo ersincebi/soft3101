@@ -5,10 +5,12 @@
       
       <input class="form-control form-control-dark w-100" id="text" value={{userTemp.email}} *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async) || userTemp">
 
-      <ul class="navbar-nav px-3">
+      <ul class="navbar-nav px-3" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async)|| (user.isOgrenci | async) || (user.isOgretmen | async)">
         <li class="nav-item text-nowrap">
-
-          <a class="nav-link" (click)="user.logout()"  href="#" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async) || userTemp" >Sign out </a>
+          <svg id="i-user"  routerLink="/myProfil" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" fill="white" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+           Profil <path d="M22 11 C22 16 19 20 16 20 13 20 10 16 10 11 10 6 12 3 16 3 20 3 22 6 22 11 Z M4 30 L28 30 C28 21 22 20 16 20 10 20 4 21 4 30 Z" />
+        </svg>
+          
         </li>
         
       </ul>
@@ -18,12 +20,7 @@
         <nav class="col-md-2 d-none d-md-block bg-light sidebar" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async)|| (user.isOgrenci | async) || (user.isOgretmen | async)">
           <div class="sidebar-sticky">
             <ul class="nav flex-column">
-              <li class="nav-item">
-                <a class="nav-link active" routerLink="/myProfil">
-                  <span data-feather="home"></span>
-                  Profil <span class="sr-only">(current)</span>
-                </a>
-              </li>
+              
               <li class="nav-item">
                 <a class="nav-link" routerLink="/Oders" *ngIf="(user.isOgrenci | async) || (user.isOgretmen | async) "> 
                   <span data-feather="shopping-cart"></span>
