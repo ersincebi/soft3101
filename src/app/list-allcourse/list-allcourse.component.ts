@@ -54,8 +54,8 @@ ogrenci:boolean=false;
 
       });
   }
-  getReq(key){
-    if(window.confirm('Dersi Eklemek İstediğinize Emin misiniz?!!????'))this.afAuth.user.subscribe(user => this.cs.sendRequest(user, key));
+  getReq(key,teacher,title){
+    if(window.confirm('Dersi Eklemek İstediğinize Emin misiniz?!!????'))this.afAuth.user.subscribe(user => this.cs.sendRequest(user, key,title));
     
   }
   remove(key){

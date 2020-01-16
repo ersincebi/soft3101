@@ -5,7 +5,6 @@
       <th scope="col">#</th>
       <th scope="col">DersinAdı</th>
       <th scope="col">DersinÖğretmeni</th>
-      <th scope="col">DersId</th>
     </tr>
   </thead>
   <tbody>
@@ -13,7 +12,6 @@
       <th scope="row">{{i+1}}</th>
       <td>{{obj.Title}}</td>
       <td>{{obj.Teacher}}</td>
-      <td>{{obj.key}}</td>
       <td><button type="button" class="btn btn-secondary" (click)="getId(obj.key) " *ngIf="(ogretmen==true)" >YoklamaAl</button> </td>
       <td><button type="button" class="btn btn-secondary" (click)="getAttDetails(obj.key) " *ngIf="(ogrenci==true)" >View Detail</button> </td>
    

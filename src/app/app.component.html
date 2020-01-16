@@ -3,7 +3,7 @@
       <a class="navbar-brand col-sm-3 col-md-2 mr-0" routerLink="/liste">whenTheRingBells </a>
   
       
-      <input class="form-control form-control-dark w-100" id="text" value={{userTemp.email}} *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async) || userTemp">
+      <input class="form-control form-control-dark w-100" id="text" value={{userTemp.email}} readonly *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async) || userTemp">
 
       <ul class="navbar-nav px-3" *ngIf="(user.isOgrenciIsleri | async) || (user.isAdmin | async)|| (user.isOgrenci | async) || (user.isOgretmen | async)">
         <li class="nav-item text-nowrap">

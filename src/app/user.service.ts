@@ -121,6 +121,20 @@ this.afAuth.auth.signOut();
       });
     })
   }
+  getMessage(user: firebase.User){
+    return  this.db.list('/ogrenci/' + user.uid + '/Mesaj').snapshotChanges().pipe(map(changes => changes
+      .map(c => ({key: c.payload.key, ...c.payload.val()}))));
+  }
+
+  getMdetail(user:firebase.User,mId){
+    return  this.db.list('/ogrenci/' + user.uid + '/Mesaj/'+mId).snapshotChanges().pipe(map(changes => changes
+      .map(c => c.payload.val())));
+  }
+  messageTF(user: firebase.User, key){
+    this.db.object('/ogrenci/'+user.uid+'/Mesaj/'+ key).update({
+        boolean: true,
+  })
+}
 
 }
 

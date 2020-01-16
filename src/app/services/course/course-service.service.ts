@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {map} from 'rxjs/operators';
+import {map, timeInterval} from 'rxjs/operators';
 import {AngularFireDatabase} from '@angular/fire/database';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 declare let alertify:any;
@@ -9,8 +9,9 @@ import { Router} from '@angular/router';
   providedIn: 'root'
 })
 export class CourseServiceService {
-title="angular";
-teacher="ogretmen";
+title:any;
+teacher:any;
+lt:Array<any>;
   constructor(private db: AngularFireDatabase,private router:Router) { }
     
     getAllcourses(user: firebase.User) {
@@ -53,10 +54,11 @@ teacher="ogretmen";
     }
   /*return  this.db.list('/requestCourses/').snapshotChanges().pipe(map(changes => changes
            .map(c => ({key: c.payload.key, ...c.payload.val()}))));*/
-  sendRequest(user: firebase.User, key){
+  sendRequest(user: firebase.User, key,title){
       this.db.object('/requestCourses/' + user.uid + '/' + key).update({
           email: user.email,
-          uid: user.uid
+          uid: user.uid,
+          Title: title
     })
     alertify.success("Ders isteği gönderildi");
 
@@ -71,17 +73,35 @@ teacher="ogretmen";
         .map(c => ({key: c.payload.key, ...c.payload.val()}))));
 }
 
-  responseRequest(uid, key,emaill){
-      this.db.object('/ogrenci/' + uid + '/Courses/' + key).update({
+  responseRequest(uid, key,emaill){    
+    this.db.object('/AllCourses/' + key + "/Teacher").snapshotChanges().subscribe(c=>{this.teacher=c.payload.val(),
+      this.db.object('/AllCourses/' + key + "/Title").snapshotChanges().subscribe(a=>{this.title=a.payload.val(),
+      
+        this.db.object('/ogrenci/' + uid + '/Courses/' + key).update({
           Title:this.title,
           Teacher:this.teacher,
           onay: true
-    });
+       });
+      
+      })
+
+    })
+    //console.log("deneme teacher= "+teacher)
+     
+    //this.lt = [];
+    //this.findTeacher(key).subscribe(c=>this.teacher=c.payload.val() );
+    console.log(this.teacher)
+    //this.findTitle(key).subscribe(c=>this.title=c.payload.val());
+    console.log(this.title)
+  //  console.log()
+      
     this.db.object('/denemeDersler/' + key + '/students/' + uid).update({
       email: emaill //düzelt
-});
-this.db.object('/requestCourses/' + uid + '/' + key).remove();
+    });
+    this.db.object('/requestCourses/' + uid + '/' + key).remove();
   }
+
+  
   ogrenciYap(key,email,name){
     if(window.confirm(name+' Öğrenci Yapmak istediğinize Emin misiniz?')){
     var x=this.db.createPushId();
@@ -127,13 +147,26 @@ this.db.object('/denemeDersler/' + x).update({
 }).then((result)=> this.router.navigate(['myProfil']));;;
 
  }
- mesajYolla(key,baslık,mesaj){
+ mesajYolla(key,baslık,mesaj,newdate,time){
   var x =this.db.createPushId();
   this.db.object('/ogrenci/' + key+'/Mesaj/'+x).update({
-    baslık:baslık,
+    baslik:baslık,
     Mesaj: mesaj,
+    Tarih:newdate,
     boolean:false,
+    Time:time,
   }).then((result)=> this.router.navigate(['myProfil']));;;
+}
+otoMesaj(user: firebase.User,newdate,time){
+  var x ='dikkat';
+  this.db.object('/ogrenci/' + user.uid+'/Mesaj/'+x).update({
+    baslik:'Dikkat',
+    Mesaj: 'Dersten kaldın Danışmanına danış',
+    Tarih:newdate,
+    boolean:false,
+    Time:time,
+  });;
+
 }
  
 getMyStudents(x){
@@ -173,6 +206,8 @@ getMyStudents(x){
     return  this.db.list('/ogrenci/'+id+'/mesaj/').snapshotChanges().pipe(map(changes => changes
       .map(c => ({key: c.payload.key, ...c.payload.val()}))));
    }
+  
+
    dropCourses(courseid,user:firebase.User){
     console.log("girdi")
    this.db.object('/ogrenci/'+user.uid+'/Courses/'+courseid).remove().then(()=>this.db.object('/denemeDersler/'+courseid+'/students/'+user.uid).remove()

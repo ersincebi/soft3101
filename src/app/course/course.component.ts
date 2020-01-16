@@ -22,6 +22,7 @@ data:any;
 listTrue:Array<any>;
 durum="belirsiz";
 count=0;
+time:any;
 
   constructor(public user:UserService,private serviceCourses: CourseServiceService, private afAuth: AngularFireAuth,private db:AngularFireDatabase) { }
 students:any;
@@ -78,16 +79,32 @@ ogretmen:boolean=false;
       this.serviceCourses.getAtt(studentid,this.courseid,attandance,this.newdate)  
       }
       getAttDetails(ıd){
+        var dateObj = new Date();
+      var month = ("0" + (dateObj.getMonth() + 1)).slice(-2); //months from 1-12
+      var day = ("0" + dateObj.getDate()).slice(-2)
+      var year = dateObj.getFullYear();
+      var currentdate = new Date();
+       this.time =  currentdate.getHours() + ":"
+                      + currentdate.getMinutes() + ":"
+                      + currentdate.getSeconds();
+  
+     
+       this.newdate = year + "-" + month + "-" + day;
+       console.log(this.newdate)
         this.listTrue = [];
-        this.afAuth.user.subscribe(user => this.serviceCourses.getAttDetails(ıd,user).subscribe(detail => this.viewDetails = detail));
-        
-        
-        
+        this.afAuth.user.subscribe(user => this.serviceCourses.getAttDetails(ıd,user).subscribe(detail => {this.viewDetails = detail;
+          if(detail[0]==null){
+           let a:Array<any>;
+           a=[]
+           a.push({statu:"Henüz Yoklama Alınmamıştur!"})
+          this.viewDetails = a;
+        }}));
+        this.durum='belirsiz'
         this.afAuth.user.subscribe(user => this.serviceCourses.getAttDetails(ıd,user).subscribe(detail => {detail.forEach(c=>{
           this.listTrue.push(c)
         }
         );if(detail.length>=4){this.listTrue.map(item=> { if(item.statu === false){ this.count++}});
-      if(this.count>=4)this.durum = "Kaldın"
+      if(this.count>=4){this.durum = "Kaldın",this.afAuth.user.subscribe(user=>this.serviceCourses.otoMesaj(user,this.newdate,this.time))}
       }
         console.log(this.count) ,this.count=0;}));
       }

@@ -32,7 +32,9 @@ count =0;
 
                 this.listRequest.push(key);
                 this.listRequest.push('email')
+                console.log(this.listRequest)
               this.listArray.push(this.listRequest);
+              console.log(this.listArray)
            });
 
       for (let i = 0; i < this.listArray.length; i++) {
@@ -42,7 +44,9 @@ count =0;
                   //console.log(subItems)
                    let k=2;
                   subItems.forEach(uid => {
-                      this.listArray[i][k]=(uid.key);
+                      this.listArray[i][k]=(uid.key);//tek eleman id
+                      k++;
+                      this.listArray[i][k]=uid.payload.child("Title").val() //her çift title
                       k++;
                   });
                 /*  console.log(email.key)
@@ -105,7 +109,9 @@ count =0;
       });
   }
     applyRequest(uid, key,email){
+      
           this.cs.responseRequest(uid, key,email);
+          console.log(email)
           window.location.reload();
     }
 }
